@@ -1,0 +1,11 @@
+digraph list {
+
+  main [shape=rectangle]
+  normalize_line [shape=ellipse]
+  reverse_list [shape=ellipse]
+  free_list [shape=ellipse]
+  main -> normalize_line [label="13868" fontsize="10"]
+  main -> reverse_list [label="185" fontsize="10"]
+  main -> free_list [label="185" fontsize="10"]
+
+}
