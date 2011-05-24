@@ -1,4 +1,4 @@
-# Google Code Jam 2001 Round 1B
+# Google Code Jam 2011
 
 Please note this code (at least the inital version of it) was writing during
 the contest and was uploaded as is, so some parts of it are pretty ugly
