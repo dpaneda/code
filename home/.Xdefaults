@@ -1,0 +1,61 @@
+!URxvt.geometry: 400x30 
+URxvt.buffered: true
+URxvt.foreground: gray
+!URxvt.background: black
+URxvt.background: rgba:1000/1000/1000/dddd
+URxvt.cursorColor: yellow
+URxvt.underlineColor: green
+URxvt.scrollBar: false
+URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true
+!URxvt.font:xft:Terminus:pixelsize=12
+
+!------------
+!True Transparency
+!------------
+!set to 32-bit for real transparency (compositing required (see xcompmgr)
+!URxvt.depth: 32 transparent=0000 opaque=ffff
+!URxvt.fading: 10
+
+URxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+
+!URxvt*foreground: #f2f2f2
+!URxvt*background: #101010
+
+! Normal
+! color0    black
+! color1    red
+! color2    green
+! color3    yellow
+! color4    blue
+! color5    purple
+! color6    cyan
+! color7    white
+
+URxvt.color0:    #6c6c6c
+URxvt.color1:    #e9897c
+URxvt.color2:    #b6e77d
+URxvt.color3:    #ecebbe
+URxvt.color4:    #a9cdeb
+URxvt.color5:    #ea96eb
+URxvt.color6:    #c9caec
+URxvt.color7:    #f2f2f2
+
+! Light
+! color8    black
+! color9    red
+! color10    green
+! color11    yellow
+! color12    blue
+! color13    purple
+! color14    cyan
+! color15    white
+
+URxvt.color8:    #747474
+URxvt.color9:    #f99286
+URxvt.color10:    #c3f786
+URxvt.color11:    #fcfbcc
+URxvt.color12:    #b6defb
+URxvt.color13:    #fba1fb
+URxvt.color14:    #d7d9fc
+URxvt.color15:    #e2e2e2
+URxvt.internalborder: 6.
