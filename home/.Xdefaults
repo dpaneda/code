@@ -18,8 +18,8 @@ URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true
 
 URxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 
-!URxvt*foreground: #f2f2f2
-!URxvt*background: #101010
+URxvt.foreground: #f2f2f2
+URxvt.background: #101010
 
 ! Normal
 ! color0    black
@@ -58,4 +58,6 @@ URxvt.color12:    #b6defb
 URxvt.color13:    #fba1fb
 URxvt.color14:    #d7d9fc
 URxvt.color15:    #e2e2e2
-URxvt.internalborder: 6.
+!URxvt.internalborder: 6.
+
+URxvt.termName: rxvt-256color

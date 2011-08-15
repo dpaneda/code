@@ -1,1 +1,7 @@
 Code ninja tools, split by languages, in directorys
+
+Also in home directory there is a copy of my config files, to be shared between
+computers. home_install.sh make an install of the files (using links). The old
+files are preserve just in case on ~/.old_config/ dir. In fact, there are more 
+than plain config files there, the idea is to put there any thing I want to have 
+in all my enviroments.

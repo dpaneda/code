@@ -1,0 +1,11 @@
+[user]
+	name = Daniel Pañeda
+	email = dpaneda@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff

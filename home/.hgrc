@@ -1,0 +1,8 @@
+[ui]
+username = "Daniel Pañeda <dpaneda@tuenti.com>"
+verbose = True
+
+[extensions]
+bookmarks = 
+graphlog = 
+color = 
