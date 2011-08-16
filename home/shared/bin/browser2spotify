@@ -1,0 +1,1 @@
+env WINEPREFIX="/home/daniel/.wine" wine "C:\Archivos de programa\Spotify\spotify.exe" /uri "$@"

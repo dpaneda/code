@@ -1,0 +1,20 @@
+# Instalar paquetes necesarios
+sudo apt-get install xdotool 
+sudo apt-get install xte 
+sudo apt-get install wmctrl
+sudo apt-get install xautomation
+sudo apt-get install xbindkeys
+
+mkdir $HOME/bin
+
+cp spokey.sh browser2spotify $HOME/bin
+cp .xbindkeysrc $HOME
+
+# Para que gnome conozca spotify y sepa como abrirlo
+gconftool-2 -t string -s /desktop/gnome/url-handlers/spotify/command /home/daniel/bin/browser2spotify
+gconftool-2 -s /desktop/gnome/url-handlers/spotify/needs_terminal false -t bool
+gconftool-2 -s /desktop/gnome/url-handlers/spotify/enabled true -t bool
+
+xbindkeys
+
+# http://dmnet.bitacoras.com/archivos/linux/mejorando-global-hotkeys-para-spotify-en-linux.php
