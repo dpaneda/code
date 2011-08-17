@@ -1,0 +1,31 @@
+# Some spells, to be used as reference
+
+################ Video conversion ################
+
+# Puede que el 1 no sea el audio, fijarse al extraer
+mkvextract tracks temp.mkv 1:temp.ac3 2:temp.h264
+# Si hay subtitulos (con el mkvinfo se puede ver en que track esta) se pueden sacar tb con
+mkvextract tracks temp.mkv 3:temp.srt
+
+# Si el audio no esta en aac (lo mas habitual en mkvs descargados) hay que convertirlo asi:
+ffmpeg -i temp.ac3 -acodec libfaac -ac 2 -ar 48000 -ab 192k temp.aac
+
+# O si tu ffmpeg no tiene soporte aac quiza sea mas facil asi..
+ffmpeg -i temp.aac ou.wav
+faac temp.wav -o temp.ac3
+
+FPS=`mkvinfo temp.h264 | gawk '/[0-9.]\ fps/ { print $6 }' | gawk -F\( '{ print $2 }' | tail -1`
+# El MP4Box tiene opciones para partir por tamaño / tiempo tb se puede añadir otro add para los subtitulos
+MP4Box -add temp.ac3 -add temp.h264 -fps $FPS temp.mp4
+
+
+# Convertir el audio de un video a aac copiando tb los subtitulos
+ffmpeg -i entrada.avi -acodec libfaac -vcodec copy -scodec copy salida.avi
+
+
+################ Adding subtitles ################
+VIDEO=$1
+SRT=$2
+OUT=$3
+
+MP4Box -add $VIDEO#audio -add $VIDEO#video -add $SRT $OUT
