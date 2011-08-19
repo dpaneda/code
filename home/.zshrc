@@ -1,10 +1,3 @@
-######################################################################
-#           jdong's zshrc file v0.2.1 , based on:
-#		      mako's zshrc file, v0.1
-#
-# 
-######################################################################
-
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
 #setopt NOTIFY
@@ -35,7 +28,7 @@ zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 zmodload -ap zsh/mapfile mapfile
 
-PATH="~/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
+PATH="~/shared/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
@@ -206,3 +199,5 @@ function hg_prompt_info {
 
 #PROMPT="%{$fg[red]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}\$(collapse_pwd)%{$reset_color%}\$(hg_prompt_info)
 #$ "
+
+bash ~/.invaders

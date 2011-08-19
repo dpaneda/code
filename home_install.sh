@@ -30,4 +30,8 @@ for config in .config/*
 do
     link_with_backup $config ~/.old_config/.config
 done
+
+# Also link shared dir
+link_with_backup shared ~/shared
+
 cd -

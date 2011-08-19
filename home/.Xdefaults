@@ -1,8 +1,5 @@
 !URxvt.geometry: 400x30 
 URxvt.buffered: true
-URxvt.foreground: gray
-!URxvt.background: black
-URxvt.background: rgba:1000/1000/1000/dddd
 URxvt.cursorColor: yellow
 URxvt.underlineColor: green
 URxvt.scrollBar: false
@@ -18,46 +15,100 @@ URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true
 
 URxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 
-URxvt.foreground: #f2f2f2
-URxvt.background: #101010
-
-! Normal
-! color0    black
-! color1    red
-! color2    green
-! color3    yellow
-! color4    blue
-! color5    purple
-! color6    cyan
-! color7    white
-
-URxvt.color0:    #6c6c6c
-URxvt.color1:    #e9897c
-URxvt.color2:    #b6e77d
-URxvt.color3:    #ecebbe
-URxvt.color4:    #a9cdeb
-URxvt.color5:    #ea96eb
-URxvt.color6:    #c9caec
-URxvt.color7:    #f2f2f2
-
-! Light
-! color8    black
-! color9    red
-! color10    green
-! color11    yellow
-! color12    blue
-! color13    purple
-! color14    cyan
-! color15    white
-
-URxvt.color8:    #747474
-URxvt.color9:    #f99286
-URxvt.color10:    #c3f786
-URxvt.color11:    #fcfbcc
-URxvt.color12:    #b6defb
-URxvt.color13:    #fba1fb
-URxvt.color14:    #d7d9fc
-URxvt.color15:    #e2e2e2
-!URxvt.internalborder: 6.
+!URxvt.foreground: #f2f2f2
+!URxvt.background: #101010
 
 URxvt.termName: rxvt-256color
+
+! tangoesque scheme
+*background: #050505
+*foreground: #babdb6
+! Black (not tango) + DarkGrey
+*color0:  #000000
+*color8:  #555753
+! DarkRed + Red
+*color1:  #ff6565
+*color9:  #ff8d8d
+! DarkGreen + Green
+*color2:  #93d44f
+*color10: #c8e7a8
+! DarkYellow + Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! DarkBlue + Blue
+*color4:  #204a87
+*color12: #3465a4
+! DarkMangenta + Mangenta
+*color5:  #ce5c00
+*color13: #f57900
+!DarkCyan + Cyan (both not tango)
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #cccccc
+*color15: #ffffff
+
+
+! Daisuke
+URxvt*background: #000000
+URxvt*foreground: #dcdccc
+!black
+URxvt*color0: #1e1e1e
+URxvt*color8: #505050
+!red
+URxvt*color1: #b04020
+URxvt*color9: #dd4010
+!green
+URxvt*color2: #afd700
+URxvt*color10: #daff30
+!yellow
+URxvt*color3: #f7cf0a
+URxvt*color11: #fce70d
+!blue
+URxvt*color4: #3060aa
+URxvt*color12: #6099dd
+!magenta
+URxvt*color5: #d6156c
+URxvt*color13: #fe4365
+!cyan
+URxvt*color6: #a0c2de
+URxvt*color14: #c9dee8
+!white
+URxvt*color7: #808080
+URxvt*color15: #b0b0b0
+
+! MrElendig
+*color0: #000000
+*color8: #9999AA 
+*color1: #DE1923
+*color9: #FF6050 
+*color2: #559933
+*color10: #66D077 
+*color3: #FF9922
+*color11: #FFFFAF 
+*color4: #3579A8
+*color12: #4EB4FA 
+*color5: #BB88DD
+*color13: #D7AFD7 
+*color6: #00BBDD
+*color14: #0DEBFF 
+*color7: #C7C7C7
+*color15: #D9D9D9
+
+! Zenburn
+!*color0: #1E2320
+!*color1: #705050
+!*color2: #60b48a
+!*color3: #dfaf8f
+!*color4: #506070
+!*color5: #dc8cc3
+!*color6: #8cd0d3
+!*color7: #dcdccc
+!*color8: #709080
+!*color9: #dca3a3
+!*color10: #c3bf9f
+!*color11: #f0dfaf
+!*color12: #94bff3
+!*color13: #ec93d3
+!*color14: #93e0e3
+!*color15: #ffffff
