@@ -8,8 +8,27 @@ require("beautiful")
 require("naughty")
 require("revelation")
 
+-- Vicious widgets
+require("vicious")
+
 -- Load Debian menu entries
 require("debian.menu")
+
+function run_once(prg,arg_string,pname,screen)
+    if not prg then
+        do return nil end
+    end
+
+    if not pname then
+       pname = prg
+    end
+
+    if not arg_string then 
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
+    else
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. " " .. arg_string .. ")",screen)
+    end
+end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -33,15 +52,15 @@ layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+    ---awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    ---awful.layout.suit.tile.top,
+    ---awful.layout.suit.fair,
+    ---awful.layout.suit.fair.horizontal,
+    ---awful.layout.suit.spiral,
+    ---awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.max,
+    --awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
 -- }}}
@@ -78,6 +97,16 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
+-- Initialize widget
+cpuwidget = awful.widget.graph()
+-- Graph properties
+cpuwidget:set_width(50)
+cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_color("#FF5656")
+cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
+-- Register widget
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -94,6 +123,7 @@ mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 4, awful.tag.viewnext),
                     awful.button({ }, 5, awful.tag.viewprev)
                     )
+
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
                      awful.button({ }, 1, function (c)
@@ -156,6 +186,7 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
+        cpuwidget,
         mytextclock,
         s == 1 and mysystray or nil,
         mytasklist[s],
@@ -235,7 +266,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "e",  revelation.revelation),
     -- Some apps
     awful.key({ modkey }, "b", function () awful.util.spawn("google-chrome") end),
-    awful.key({ modkey }, "s", function () awful.util.spawn("spotify") end)
+    awful.key({ modkey }, "s", function () awful.util.spawn("spotify") end),
+    -- .Xdefaults reload
+    awful.key({ modkey }, "z", function () run_once("xrdb -load ~/.Xdefaults") end)
+
 )
 
 clientkeys = awful.util.table.join(
@@ -359,23 +393,5 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-
-function run_once(prg,arg_string,pname,screen)
-    if not prg then
-        do return nil end
-    end
-
-    if not pname then
-       pname = prg
-    end
-
-    if not arg_string then 
-        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
-    else
-        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. " " .. arg_string .. ")",screen)
-    end
-end
-
 ---run_once("xscreensaver","-no-splash")
 run_once("/home/daniel/bin/set_wallpaper.sh")
-run_once("google-chrome",nil,nil,1)

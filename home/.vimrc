@@ -78,3 +78,5 @@ set tags=./tags,./../tags,./../../tags,./../../../tags,./../../../../tags,./../.
 
 map <F2> :NERDTreeToggle<CR>
 set pastetoggle=<f12>
+
+highlight Pmenu ctermbg=238 gui=bold
