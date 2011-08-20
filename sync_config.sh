@@ -1,4 +1,10 @@
 #!/bin/zsh
+
+cd ~/code/
+
+git pull
+git push
+
 mkdir -p ~/.old_config/.config
 
 function link_with_backup {
@@ -33,5 +39,7 @@ done
 
 # Also link shared dir
 link_with_backup shared ~/shared
+
+git status
 
 cd -
