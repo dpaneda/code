@@ -1,9 +1,12 @@
 #!/bin/zsh
 # Script to see a series of pictures over http, as feh does not support ranges
 
-dir=`mktemp -d`
+for arg in $*
+do
+    dir=`mktemp -d`
 
-cd $dir
-curl -O $*
-feh -F *
-cd -
+    cd $dir
+    curl -O $arg
+    feh -F *
+    cd -
+done
