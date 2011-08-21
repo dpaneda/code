@@ -20,6 +20,9 @@ URxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 
 URxvt.termName: rxvt-256color
 
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+
 ! tangoesque scheme
 *background: #050505
 *foreground: #babdb6
