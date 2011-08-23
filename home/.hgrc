@@ -12,8 +12,8 @@ inotify =
 hgext.bookmarks =
 hgext.graphlog =
 transplant=
-hggit = /home/daniel/share/hg-git/hggit
-prompt = /home/daniel/share/hg-prompt/prompt.py
+hggit = /home/daniel/shared/hg-git/hggit
+prompt = /home/daniel/shared/hg-prompt/prompt.py
 
 [inotify]
 autostart = False
