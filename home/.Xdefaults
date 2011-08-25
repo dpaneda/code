@@ -1,11 +1,12 @@
-!URxvt.geometry: 400x30 
+URxvt.termName: rxvt-256color
 URxvt.buffered: true
 URxvt.cursorColor: yellow
 URxvt.underlineColor: green
 URxvt.scrollBar: false
 !URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true
-URxvt.font:xft:Terminus:pixelsize=12.5:antialias=true
+!URxvt.font:xft:Terminus:pixelsize=12.5:antialias=true
 !URxvt.font:xft:CodingFontTobi:pixelsize=12
+URxvt.font:xft:Liberation Mono:pixelsize=12:antialias=true
 
 !------------
 !True Transparency
@@ -16,10 +17,6 @@ URxvt.font:xft:Terminus:pixelsize=12.5:antialias=true
 
 URxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 
-!URxvt.foreground: #f2f2f2
-!URxvt.background: #101010
-
-URxvt.termName: rxvt-256color
 
 URxvt.internalBorder: 0
 URxvt.externalBorder: 0
