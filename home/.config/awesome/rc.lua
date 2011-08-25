@@ -48,7 +48,8 @@ cpuicon = widget({ type = "imagebox" })
 cpuicon.image = image(beautiful.widget_cpu)
 -- Initialize widgets
 cpugraph  = awful.widget.graph()
-tzswidget = widget({ type = "textbox" })
+temp1 = widget({ type = "textbox" })
+temp2 = widget({ type = "textbox" })
 -- Graph properties
 cpugraph:set_width(40)
 cpugraph:set_height(14)
@@ -59,7 +60,8 @@ cpugraph:set_gradient_colors({ beautiful.fg_end_widget,
    beautiful.fg_center_widget, beautiful.fg_widget
 }) -- Register widgets
 vicious.register(cpugraph,  vicious.widgets.cpu,     "$1")
-vicious.register(tzswidget, vicious.widgets.thermal, "$1C", 19, "thermal_zone0")
+vicious.register(temp1, vicious.contrib.sensors, "Temp: $1", 10, "CPU Temperature")
+vicious.register(temp2, vicious.contrib.sensors, " / $1", 10, "MB Temperature")
 -- }}}
 
 -- {{{ Memory usage
@@ -302,7 +304,7 @@ for s = 1, screen.count() do
         separator, upicon, netwidget, dnicon,
         separator, fs.h.widget, fs.r.widget, fsicon,
         separator, membar.widget, memicon,
-        separator, tzswidget, spacer, cpugraph.widget, cpuicon,
+        separator, temp2, temp1, spacer, cpugraph.widget, cpuicon,
         mytasklist[s],
         separator, ["layout"] = awful.widget.layout.horizontal.rightleft
     }
