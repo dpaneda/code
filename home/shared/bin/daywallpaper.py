@@ -19,7 +19,7 @@ url = urllib.urlopen(base)
 caption = "Fail"
 
 for line in url:
-    match = re.search("(http://images.nationalgeographic.com/wpf/media-live/photos/.*wallpaper.*jpg)", line)
+    match = re.search("(http://images.nationalgeographic.com/wpf/media-live/photos/.*jpg)\"  width=\"990\"", line)
     if match is not None:
         print "Downloading wallpaper: " + match.group(1)
         download_image(match.group(1))
