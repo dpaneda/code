@@ -60,8 +60,8 @@ cpugraph:set_gradient_colors({ beautiful.fg_end_widget,
    beautiful.fg_center_widget, beautiful.fg_widget
 }) -- Register widgets
 vicious.register(cpugraph,  vicious.widgets.cpu,     "$1")
-vicious.register(temp1, vicious.contrib.sensors, "Temp: $1", 10, "CPU Temperature")
-vicious.register(temp2, vicious.contrib.sensors, " / $1", 10, "MB Temperature")
+--vicious.register(temp1, vicious.contrib.sensors, "Temp: $1", 10, "CPU Temperature")
+--vicious.register(temp2, vicious.contrib.sensors, " / $1", 10, "MB Temperature")
 -- }}}
 
 -- {{{ Memory usage
@@ -380,7 +380,7 @@ globalkeys = awful.util.table.join(
     -- Revelation
     awful.key({ modkey }, "e",  revelation.revelation),
     -- Some apps
-    awful.key({ modkey }, "b", function () awful.util.spawn("google-chrome") end),
+    awful.key({ modkey }, "b", function () awful.util.spawn("chromium") end),
     awful.key({ modkey }, "s", function () awful.util.spawn("spotify") end),
     -- .Xdefaults reload
     awful.key({ modkey }, "z", function () run_once("xrdb -load ~/.Xdefaults") end),
