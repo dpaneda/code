@@ -1,0 +1,8 @@
+probe syscall.kill
+{
+    printf ("%s(%d) kill (%s)\n", execname(), pid(), argstr)
+}
+probe timer.ms(40000) # after 40 seconds
+{
+    exit ()
+}
