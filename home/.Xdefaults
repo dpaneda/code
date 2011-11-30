@@ -3,12 +3,15 @@ URxvt.buffered: true
 URxvt.cursorColor: yellow
 URxvt.underlineColor: green
 URxvt.scrollBar: false
+<<<<<<< HEAD
 URxvt.saveLines: 100000
 
-URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true
-URxvt.font:xft:Liberation Mono:pixelsize=12:antialias=true
+!URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true
+!URxvt.font:xft:Liberation Mono:pixelsize=12:antialias=true
 !URxvt.font:xft:Luxi Mono:pixelsize=12:antialias=true
 !URxvt.font:xft:Monaco:pixelsize=12:antialias=true
+!URxvt.font:xft:Anonymous Pro:antialias=true
+URxvt.font:xft:Terminus:pixelsize=14:antialias=true
 
 !------------
 !True Transparency

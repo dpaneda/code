@@ -75,11 +75,6 @@ fi
 
 export PATH=$PATH:/home/daniel/android/tools:/home/daniel/android/platform-tools:/home/daniel/private_code/go/bin:/home/daniel/bin
 
-# Para que gnome conozca spotify y sepa como abrirlo
-gconftool-2 -t string -s /desktop/gnome/url-handlers/spotify/command /home/daniel/bin/browser2spotify
-gconftool-2 -s /desktop/gnome/url-handlers/spotify/needs_terminal false -t bool
-gconftool-2 -s /desktop/gnome/url-handlers/spotify/enabled true -t bool
-
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 
 #xbindkeys

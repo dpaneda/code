@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # Dowload wallpaper of the day from national geographic
 import urllib,os,re
 import Image, ImageDraw, ImageFont
@@ -27,7 +27,7 @@ for line in url:
     if match is not None:
         caption = match.group(1)
 
-font = ImageFont.truetype("/usr/share/fonts/truetype/ttf-liberation/LiberationMono-Bold.ttf",40)
+font = ImageFont.truetype("/home/daniel/shared/fonts/LiberationMono-Bold.ttf",40)
 img = Image.open(WALLPAPER)
 img.resize((1680, 1050))
 draw = ImageDraw.Draw(img)

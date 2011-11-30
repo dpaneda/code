@@ -28,7 +28,7 @@ zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 zmodload -ap zsh/mapfile mapfile
 
-PATH="/home/daniel/shared/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
+PATH="/home/daniel/private_code/go/bin:/home/daniel/shared/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
 HISTFILE=$HOME/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
@@ -130,6 +130,8 @@ bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
 bindkey '^[[5~' up-line-or-history
 bindkey '^[[6~' down-line-or-history
+bindkey '^[[3~'          delete-char
+bindkey '^[3;5~'         delete-char
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
