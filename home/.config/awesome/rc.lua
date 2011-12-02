@@ -380,7 +380,7 @@ globalkeys = awful.util.table.join(
     -- Revelation
     awful.key({ modkey }, "e",  revelation.revelation),
     -- Some apps
-    awful.key({ modkey }, "b", function () awful.util.spawn("chromium") end),
+    awful.key({ modkey }, "b", function () awful.util.spawn("google-chrome") end),
     awful.key({ modkey }, "s", function () awful.util.spawn("spotify") end),
     -- .Xdefaults reload
     awful.key({ modkey }, "z", function () run_once("xrdb -load ~/.Xdefaults") end),
