@@ -2,7 +2,7 @@
 # setopt NOHUP
 #setopt NOTIFY
 #setopt NO_FLOW_CONTROL
-setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 setopt APPEND_HISTORY
 # setopt AUTO_LIST		# these two should be turned off
 # setopt AUTO_REMOVE_SLASH
@@ -20,7 +20,7 @@ setopt   notify globdots pushdtohome cdablevars autolist
 setopt   correctall autocd recexact longlistjobs
 setopt   autoresume histignoredups pushdsilent 
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
-unsetopt bgnice autoparamslash
+unsetopt bgnice autoparamslash correct correct_all
 
 # Autoload zsh modules when they are referenced
 zmodload -a zsh/stat stat
@@ -30,8 +30,8 @@ zmodload -ap zsh/mapfile mapfile
 
 PATH="/home/daniel/private_code/go/bin:/home/daniel/shared/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
 HISTFILE=$HOME/.zhistory
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HOSTNAME="`hostname`"
 PAGER='less'
 EDITOR='vim'
@@ -73,23 +73,55 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias dotags="ctags-exuberant -f tags -h \".php\" -R --exclude=\"\.hg\" --totals=yes --tag-relative=yes --PHP-kinds=+cf --regex-PHP='/abstract class ([^ ]*)/\1/c/' --regex-PHP='/interface ([^ ]*)/\1/c/' --regex-PHP='/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/'"
 
-function hgo {
-	export CMAKE_PREFIX_PATH=`/bin/pwd`/../
-	export HPHP_HOME=`/bin/pwd`
-	export HPHP_LIB=`/bin/pwd`/bin
-	export HPHP=$HPHP_HOME/src/hphp/hphp
-	export HPHPI=$HPHP_HOME/src/hphpi/hphpi
-	export MAKEOPTS="-j4"
+# Hiphop stuuuuf
+
+export HH_BRANCH="/home/daniel/tuenti/be/"
+export HH_CONFIG_DIR="/home/daniel/tuenti/hiphop_config"
+export HH_PROD_CONFIG_DIR="/home/daniel/tuenti/hiphop_prod_config"
+export CMAKE_PREFIX_PATH="/home/daniel/dev/"
+export HPHP_HOME="/home/daniel/dev/hiphop-php"
+export HPHP_LIB=$HPHP_HOME
+export HPHP=$HPHP_HOME/src/hphp/hphp
+export HPHPI=$HPHP_HOME/src/hphpi/hphpi
+export MAKEOPTS="-j5 -pipe"
+
+function fcu_hh {
+  ln -sf /home/daniel/tuenti/hiphop_config/json_configuration configuration
+  ln -sf /home/daniel/tuenti/hiphop_config/server.hdf
 }
 
-function config_update {
-    ssh troy php /srv/www/dpaneda/0/scripts/cli/Spawn.php GenerateJsonConfig
-    mkdir -p configuration
-    scp troy:*json configuration
-    ssh troy rm /home/dpaneda/*.json
-    cp /home/daniel/tuenti/server.hdf .
-    cp /home/daniel/tuenti/errorLoggerConfig.php.json configuration
+function cu_hh {
+  ssh troy php /srv/www/dpaneda/0/scripts/cli/Spawn.php GenerateJsonConfig
+  scp 'troy:*json' $HH_CONFIG_DIR/json_configuration
+  ssh troy 'rm /home/dpaneda/*.json'
+  cp $HH_CONFIG_DIR/override/* $HH_CONFIG_DIR/json_configuration
+  ln -sf /home/daniel/tuenti/hiphop_config/json_configuration configuration
+  ln -sf /home/daniel/tuenti/hiphop_config/server.hdf
 }
+
+function prod_cu_hh {
+  rsync -r dev02:/srv/www/configuration $HH_PROD_CONFIG_DIR
+  cd $HH_PROD_CONFIG_DIR/json_configuration
+  php $HH_BRANCH/scripts/configuration/GenerateJsonConfig.php $HH_PROD_CONFIG_DIR/configuration
+  cp $HH_PROD_CONFIG_DIR/override/* .
+  cd -
+  ln -sf /home/daniel/tuenti/hiphop_config/json_configuration configuration
+  ln -sf /home/daniel/tuenti/hiphop_config/server.hdf
+}
+
+function ic_hh {
+  cd $HH_BRANCH
+  if [ ! -f auto_list ]
+  then
+    scripts/hiphop/hh_generator.py -e main/app/file-routing/hiphop.index.php -d . >auto_list
+  fi
+  $HPHP --input-list=auto_list -k 1 --log=3 -o ../be-hh --file-cache cache --revision "0" --sync-dir /tmp/hh_sync
+  cd ../be-hh
+  fcu_hh
+  ./program -m server -p 8080 -c server.hdf
+}
+
+# End of HipHop stuff
 
 autoload -U compinit
 compinit
@@ -199,7 +231,13 @@ function hg_prompt_info {
     hg prompt --angle-brackets " on %{$fg[green]%}<branch>%{$reset_color%} at %{$fg[blue]%}<tags|%{$reset_color%}, %{$fg[yellow]%}>%{$reset_color%} repo %{$fg[blue]%}${HGREPO}%{$reset_color%} %{$fg[green]%}<status|modified|unknown><update>%{$reset_color%} " 2>/dev/null 
 }
 
-#PROMPT="%{$fg[red]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}\$(collapse_pwd)%{$reset_color%}\$(hg_prompt_info)
-#$ "
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+    PROMPT="${debian_chroot:+($debian_chroot)} %{$fg[red]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}\$(collapse_pwd)%{$reset_color%}\$ "
+else
+    PROMPT="%{$fg[red]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}\$(collapse_pwd)%{$reset_color%}\$(hg_prompt_info)
+$ "
+fi
 
 bash ~/.invaders

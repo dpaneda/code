@@ -1,7 +1,7 @@
 set expandtab
-set tabstop=4
-set sw=4
-set softtabstop=4
+set tabstop=2
+set sw=2
+set softtabstop=2
 set autoindent
 set shiftround
 set background=dark
@@ -47,7 +47,7 @@ autocmd FileType html,css set noexpandtab tabstop=2
 autocmd FileType make set noexpandtab shiftwidth=8
 
 "Auto Complete <c-x><c-o>
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php set noexpandtab omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 " Delete trailing white space and ^M chars open/save
@@ -78,5 +78,12 @@ set tags=./tags,./../tags,./../../tags,./../../../tags,./../../../../tags,./../.
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TlistToggle<CR>
 set pastetoggle=<f12>
+nnoremap <F11> :set nonumber!<CR>
 
 highlight Pmenu ctermbg=238 gui=bold
+colorscheme desert
+
+set foldmethod=syntax   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=4         "this is just what i use
