@@ -3,8 +3,7 @@ URxvt.buffered: true
 URxvt.cursorColor: yellow
 URxvt.underlineColor: green
 URxvt.scrollBar: false
-<<<<<<< HEAD
-URxvt.saveLines: 100000
+URxvt.saveLines: 10000
 
 !URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true
 !URxvt.font:xft:Liberation Mono:pixelsize=12:antialias=true
