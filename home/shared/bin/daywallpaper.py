@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python2.7
 # Dowload wallpaper of the day from national geographic
 import urllib,os,re
 import Image, ImageDraw, ImageFont
