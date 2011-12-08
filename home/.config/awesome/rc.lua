@@ -7,6 +7,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 require("vicious")
+require("blingbling")
 
 function run_once(prg,arg_string,pname,screen)
     if not prg then
@@ -24,31 +25,13 @@ function run_once(prg,arg_string,pname,screen)
     end
 end
 
-local exec   = awful.util.spawn
-local sexec  = awful.util.spawn_with_shell
-local scount = screen.count()
+socket = require "socket"
+hostname = socket.dns.gethostname()
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 config = awful.util.getdir("config")
-beautiful.init(config .. "/themes/dust/theme.lua")
-
--- {{{ Memory usage
-memicon = widget({ type = "imagebox" })
-memicon.image = image(beautiful.widget_mem)
--- Initialize widget
-membar = awful.widget.progressbar()
--- Pogressbar properties
-membar:set_width(10)
-membar:set_height(12)
-membar:set_vertical(true)
-membar:set_background_color(beautiful.fg_off_widget)
-membar:set_border_color(beautiful.border_widget)
-membar:set_color(beautiful.fg_widget)
-membar:set_gradient_colors({ beautiful.fg_widget,
-   beautiful.fg_center_widget, beautiful.fg_end_widget
-})
--- }}}
+beautiful.init(config .. "/themes/black_blue/theme.lua")
 
 ---- {{{ Volume level
 
@@ -66,33 +49,6 @@ function volume_mute()
     awful.util.spawn("amixer -q set Master toggle")
     vicious.force({volbar, volstate})
 end
-
---volicon = widget({ type = "imagebox" })
---volicon.image = image(beautiful.widget_vol)
----- Initialize widgets
-volbar   = awful.widget.progressbar()
-volstate = widget({ type = "textbox" })
-volstate.width = 10
--- Progressbar properties
-volbar:set_width(30)
-volbar:set_height(12)
-volbar:set_vertical(false)
-volbar:set_background_color(beautiful.fg_off_widget)
-volbar:set_border_color(beautiful.border_widget)
-volbar:set_color(beautiful.fg_widget)
-volbar:set_gradient_colors({ beautiful.fg_widget,
-   beautiful.fg_center_widget, beautiful.fg_end_widget
-}) -- Enable caching
--- Register buttons
-volbar.widget:buttons(awful.util.table.join(
-   awful.button({ }, 1, function () exec("alsamixer") end),
-   awful.button({ }, 2, volume_mute),
-   awful.button({ }, 4, volume_up),
-   awful.button({ }, 5, volume_down)
-)) -- Register assigned buttons
-volstate:buttons(volbar.widget:buttons())
-
--- }}}
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtcd"
@@ -145,60 +101,98 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
 -- }}}
 
---  Wibox
---Initialize widget
-volbar2 = awful.widget.progressbar()
---Progressbar settings
-  volbar2:set_width(8)
-  volbar2:set_height(18)
-  volbar2:set_vertical(true)
-  volbar2:set_ticks(true)
-  volbar2:set_ticks_gap(1)
-  volbar2:set_ticks_size(2)
-  volbar2:set_background_color("#000000")
-  volbar2:set_border_color("#000000")
-  volbar2:set_color("#D9D9D9")
-  volbar2:set_gradient_colors({ "#D9D9D9", "#D9D9D9", "#D9D9D9" })
+--pango
+pango_small="size=\"small\""
+pango_x_small="size=\"x-small\""
+pango_xx_small="size=\"xx-small\""
+pango_bold="weight=\"bold\""
 
--- {{{ CPU usage and temperature
--- Initialize widgets
-cpugraph = awful.widget.graph()
--- Graph properties
---cpugraph.bg_align = "left"
-cpugraph.width = 35
-cpugraph.height = 25
-cpugraph:set_background_color("#333333")
-cpugraph:set_gradient_angle(0)
-cpugraph:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
-
---Create a cpuwidget
-cpuwidget = widget({ type = "textbox" })
-cpuwidget.width = 45
-cpuwidget.align = "right"
-cpuwidget.bg_image = image(config .. "/icons/dust/cpu.png")
-cpuwidget.bg_align = "left"
-cpuwidget.bg_resize = true
-
--- Wifiwidget -- Shows connected wlan and signal quality
-wifiwidget = widget({ type = "textbox" })
-wifiwidget.align = "right"
-wifiwidget.bg_image = image(config .. "/icons/wifi.png")
-wifiwidget.bg_align = "left"
-wifiwidget.bg_resize = true
-
---Seperator
+--Separator
 spacer = widget({ type = "textbox" })
 spacer.text = " "
 spicon = widget({ type = "textbox" })
 spicon.text = "<span color='#EEEE66'> | </span>"
 
--- Create a netwidget (usage)
-dnicon = widget({ type = "imagebox" })
-upicon = widget({ type = "imagebox" })
-dnicon.image = image(config .. "/icons/dust/down.png")
-upicon.image = image(config .. "/icons/dust/up.png")
--- Initialize widget
-netwidget = widget({ type = "textbox" })
+-- {{{ CPU usage
+-- Initialize widgets
+  cpugraph=blingbling.classical_graph.new()
+  cpugraph:set_width(100)
+  cpugraph:set_tiles_color("#00000022")
+  cpugraph:set_show_text(true)
+  cpugraph:set_label("CPU $percent %")
+  --bind top popup on the graph
+  blingbling.popups.htop(cpugraph.widget,
+    { 
+        title_color =beautiful.notify_font_color_1, 
+        user_color= beautiful.notify_font_color_2, 
+        root_color=beautiful.notify_font_color_3, 
+        terminal = terminal
+    })
+  vicious.register(cpugraph, vicious.widgets.cpu,'$1',2)
+
+  corelabel=widget({ type = "textbox" })
+  corelabel.text="<span color=\""..beautiful.textbox_widget_as_label_font_color.."\" "..pango_small..">Cores:</span>"
+
+  function my_core(core)
+    corewidget = blingbling.progress_graph.new()
+    corewidget:set_height(18)
+    corewidget:set_width(6)
+    corewidget:set_filled(true)
+    corewidget:set_h_margin(1)
+    corewidget:set_filled_color("#00000033")
+    vicious.register(corewidget, vicious.widgets.cpu, core)
+    
+    return corewidget
+  end
+
+  --corewidget1 = my_core("$2");
+  --corewidget2 = my_core("$3");
+  --corewidget3 = my_core("$4");
+  --corewidget4 = my_core("$5");
+
+  netwidget = widget({ type = "textbox", name = "netwidget" })
+  netwidget.text = "NET "
+  --bind nestat popup on textbox 
+  blingbling.popups.netstat(netwidget,{ title_color = beautiful.notify_font_color_1, established_color= beautiful.notify_font_color_3, listen_color=beautiful.notify_font_color_2})
+
+  wlan0 = blingbling.net.new()
+  wlan0:set_height(18)
+  --activate popup with ip informations on the net widget
+  wlan0:set_ippopup()
+  wlan0:set_show_text(true)
+  wlan0:set_v_margin(3)
+  wlan0:set_interface("wlan0")
+
+--Volume
+  volume_label = widget({ type = "textbox"})
+  volume_label.text='<span '..pango_small..'><span color="'..beautiful.textbox_widget_as_label_font_color..'">Vol.: </span></span>'
+  my_volume=blingbling.volume.new()
+  my_volume:set_height(16)
+  my_volume:set_v_margin(3)
+  my_volume:set_width(20)
+  my_volume:update_master()
+  my_volume:set_master_control()
+  my_volume:set_bar(true)
+  my_volume:set_background_graph_color("#00000099")
+  my_volume:set_graph_color("#00ccffaa")
+
+--udisks-glue menu
+  udisks_glue=blingbling.udisks_glue.new(beautiful.udisks_glue)
+  udisks_glue:set_mount_icon(beautiful.accept)
+  udisks_glue:set_umount_icon(beautiful.cancel)
+  udisks_glue:set_detach_icon(beautiful.cancel)
+  udisks_glue:set_Usb_icon(beautiful.usb)
+  udisks_glue:set_Cdrom_icon(beautiful.cdrom)
+  awful.widget.layout.margins[udisks_glue.widget]= { top = 4}
+  udisks_glue.widget.resize= false
+
+-- Wifiwidget -- Shows connected wlan and signal quality
+  wifiwidget = widget({ type = "textbox" })
+  wifiwidget.align = "right"
+  wifiwidget.bg_image = image(config .. "/icons/wifi.png")
+  wifiwidget.bg_align = "left"
+  wifiwidget.bg_resize = true
+  vicious.register(wifiwidget, vicious.widgets.wifi, "    ${ssid}  ${link}/70", 5, "wlan0")
 
 -- Create a battery widget
 baticon = widget({ type = "imagebox" })
@@ -206,25 +200,40 @@ baticon.image = image(config .. "/icons/dust/bat.png")
 --Initialize widget
 batwidget = widget({ type = "textbox" })
 
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
+if hostname == "windy" then
+    bat_widget = { spicon, batwidget, baticon, layout = awful.widget.layout.horizontal.rightleft }
+else
+    bat_widget = {}
+end
+
+--Calendar widget and date
+calendar = blingbling.calendar.new({type = "imagebox", image = beautiful.calendar})
+calendar:set_cell_padding(2)
+calendar:set_title_font_size(9)
+calendar:set_font_size(8)
+calendar:set_inter_margin(1)
+calendar:set_columns_lines_titles_font_size(8)
+calendar:set_columns_lines_titles_text_color("#d4aa00ff")
+
+datewidget = widget({ type = "textbox" })
+vicious.register(datewidget, vicious.widgets.date, 
+    '<span color="' .. beautiful.text_font_color_1 .. '" ' .. pango_small ..">%b %d, %R</span>", 60)
 
 --Register widgets
-vicious.register(cpugraph,   vicious.widgets.cpu, "$1")
-vicious.register(cpuwidget,  vicious.widgets.cpu, "$1 %", 2)
-vicious.register(volbar2,    vicious.widgets.volume, "$1", 2, "Master")
-vicious.register(wifiwidget, vicious.widgets.wifi, "    ${ssid}  ${link}/70", 5, "wlan0")
-vicious.register(netwidget,  vicious.widgets.net, "${wlan0 down_kb} / ${wlan0 up_kb}", 1)
 vicious.register(batwidget,  vicious.widgets.bat, "$1$2", 32, "BAT1")
-vicious.register(membar,     vicious.widgets.mem, "$1", 13)
-vicious.register(volbar,     vicious.widgets.volume, "$1", 2, "Master")
-vicious.register(volstate,   vicious.widgets.volume, "$2", 2, "Master")
+
+-- Shutdown and reboot
+shutdown=blingbling.system.shutdownmenu(beautiful.shutdown, beautiful.accept, beautiful.cancel)
+shutdown.resize = false
+awful.widget.layout.margins[shutdown] = {top=4}
+reboot=blingbling.system.rebootmenu(beautiful.reboot, beautiful.accept, beautiful.cancel)
+reboot.resize = false
+awful.widget.layout.margins[reboot] = {top=4}
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
 -- Create a wibox for each screen and add it
-mywibox = {}
 promptbox = {}
 layoutbox = {}
 taglist = {}
@@ -281,27 +290,27 @@ for s = 1, screen.count() do
                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
     -- Create the wibox
-    wibox[s] = awful.wibox({ position = "top", screen = s, border_width = 0, border_color = "#FFFFFF" })
-   -- Add widgets to the wibox - order matters
+    wibox[s] = awful.wibox({ position = "top", screen = s, bg = theme.bg_normal})
+    -- Add widgets to the wibox - order matters
+    leftwidgets = {
+        taglist[s], spacer, layoutbox[s], spacer, 
+        promptbox[s],
+        layout = awful.widget.layout.horizontal.leftright
+    }
     wibox[s].widgets = {
-        {
-            taglist[s], spacer, layoutbox[s], spacer, 
-            promptbox[s],
-            layout = awful.widget.layout.horizontal.leftright
-        },
-        s == 1 and mysystray or nil, mytextclock,
+        leftwidgets,
+        spacer, shutdown, spacer, reboot, spacer, udisks_glue.widget, 
+        s == 1 and mysystray or nil,
+        my_volume.widget, volume_label,
+        spicon, datewidget, spacer, calendar.widget,
+        spicon, wlan0.widget, netwidget,
         spicon, 
-        cpugraph.widget, spacer, cpuwidget,
-        --spicon,
-        --volbar.widget,
-        spicon,
-        upicon, netwidget, dnicon, 
-        spicon, 
-        wifiwidget, 
-        spicon, 
-        batwidget, baticon,
+        --corewidget1.widget, corewidget2.widget, corewidget3.widget, corewidget4.widget, 
+        spacer, cpugraph.widget,
+        spicon, wifiwidget,
+        bat_widget,
         mytasklist[s],
-        layout = awful.widget.layout.horizontal.rightleft
+        layout = awful.widget.layout.horizontal.rightleft,
     }
 end
 
@@ -497,3 +506,4 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+-- vim: ts=4:sw=4:softtabstop=4
