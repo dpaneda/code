@@ -150,31 +150,43 @@ spicon.text = "<span color='#EEEE66'> | </span>"
   --corewidget3 = my_core("$4");
   --corewidget4 = my_core("$5");
 
-  netwidget = widget({ type = "textbox", name = "netwidget" })
-  netwidget.text = "NET "
+  netstat_widget = widget({ type = "textbox", name = "netstat_widget" })
+  netstat_widget.text = "NET "
   --bind nestat popup on textbox 
-  blingbling.popups.netstat(netwidget,{ title_color = beautiful.notify_font_color_1, established_color= beautiful.notify_font_color_3, listen_color=beautiful.notify_font_color_2})
+  blingbling.popups.netstat(netstat_widget, 
+    { 
+        title_color = beautiful.notify_font_color_1, 
+        established_color= beautiful.notify_font_color_3, 
+        listen_color=beautiful.notify_font_color_2
+  })
 
-  wlan0 = blingbling.net.new()
-  wlan0:set_height(18)
-  --activate popup with ip informations on the net widget
-  wlan0:set_ippopup()
-  wlan0:set_show_text(true)
-  wlan0:set_v_margin(3)
-  wlan0:set_interface("wlan0")
 
---Volume
-  volume_label = widget({ type = "textbox"})
-  volume_label.text='<span '..pango_small..'><span color="'..beautiful.textbox_widget_as_label_font_color..'">Vol.: </span></span>'
-  my_volume=blingbling.volume.new()
-  my_volume:set_height(16)
-  my_volume:set_v_margin(3)
-  my_volume:set_width(20)
-  my_volume:update_master()
-  my_volume:set_master_control()
-  my_volume:set_bar(true)
-  my_volume:set_background_graph_color("#00000099")
-  my_volume:set_graph_color("#00ccffaa")
+netspeed_widget = blingbling.net.new()
+netspeed_widget:set_height(18)
+--activate popup with ip informations on the net widget
+netspeed_widget:set_ippopup()
+netspeed_widget:set_show_text(true)
+netspeed_widget:set_v_margin(3)
+if hostname == "delorean" then
+    netspeed_widget:set_interface("wlan0")
+else
+    netspeed_widget:set_interface("eth0")
+end
+
+if not hostname == "windy" then
+    --Volume
+    volume_label = widget({ type = "textbox"})
+    volume_label.text='<span '..pango_small..'><span color="'..beautiful.textbox_widget_as_label_font_color..'">Vol.: </span></span>'
+    my_volume=blingbling.volume.new()
+    my_volume:set_height(16)
+    my_volume:set_v_margin(3)
+    my_volume:set_width(20)
+    my_volume:update_master()
+    my_volume:set_master_control()
+    my_volume:set_bar(true)
+    my_volume:set_background_graph_color("#00000099")
+    my_volume:set_graph_color("#00ccffaa")
+end
 
 --udisks-glue menu
   udisks_glue=blingbling.udisks_glue.new(beautiful.udisks_glue)
@@ -186,24 +198,23 @@ spicon.text = "<span color='#EEEE66'> | </span>"
   awful.widget.layout.margins[udisks_glue.widget]= { top = 4}
   udisks_glue.widget.resize= false
 
--- Wifiwidget -- Shows connected wlan and signal quality
-  wifiwidget = widget({ type = "textbox" })
-  wifiwidget.align = "right"
-  wifiwidget.bg_image = image(config .. "/icons/wifi.png")
-  wifiwidget.bg_align = "left"
-  wifiwidget.bg_resize = true
-  vicious.register(wifiwidget, vicious.widgets.wifi, "    ${ssid}  ${link}/70", 5, "wlan0")
-
--- Create a battery widget
-baticon = widget({ type = "imagebox" })
-baticon.image = image(config .. "/icons/dust/bat.png")
---Initialize widget
-batwidget = widget({ type = "textbox" })
+if hostname == "delorean" then
+    -- Wifiwidget -- Shows connected wlan and signal quality
+    wifiwidget = widget({ type = "textbox" })
+    wifiwidget.align = "right"
+    wifiwidget.bg_image = image(config .. "/icons/wifi.png")
+    wifiwidget.bg_align = "left"
+    wifiwidget.bg_resize = true
+    vicious.register(wifiwidget, vicious.widgets.wifi, "    ${ssid}  ${link}/70", 5, "netspeed_widget")
+end
 
 if hostname == "windy" then
-    bat_widget = { spicon, batwidget, baticon, layout = awful.widget.layout.horizontal.rightleft }
-else
-    bat_widget = {}
+    -- Create a battery widget
+    baticon = widget({ type = "imagebox" })
+    baticon.image = image(config .. "/icons/dust/bat.png")
+    --Initialize widget
+    batwidget = widget({ type = "textbox" })
+    vicious.register(batwidget,  vicious.widgets.bat, "$1$2", 32, "BAT1")
 end
 
 --Calendar widget and date
@@ -220,7 +231,6 @@ vicious.register(datewidget, vicious.widgets.date,
     '<span color="' .. beautiful.text_font_color_1 .. '" ' .. pango_small ..">%b %d, %R</span>", 60)
 
 --Register widgets
-vicious.register(batwidget,  vicious.widgets.bat, "$1$2", 32, "BAT1")
 
 -- Shutdown and reboot
 shutdown=blingbling.system.shutdownmenu(beautiful.shutdown, beautiful.accept, beautiful.cancel)
@@ -271,6 +281,45 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+
+function get_widgets (s)
+    leftwidgets = {
+        taglist[s], spacer, layoutbox[s], spacer, 
+        promptbox[s],
+        layout = awful.widget.layout.horizontal.leftright
+    }
+
+    local widgets
+    if hostname == "windy" then
+        widgets = {
+            leftwidgets,
+            spacer, udisks_glue.widget, 
+            s == 1 and mysystray or nil,
+            spicon, datewidget, spacer, calendar.widget,
+            spicon, netspeed_widget.widget, netstat_widget,
+            spicon, spacer, cpugraph.widget,
+            spicon, batwidget, baticon,
+            mytasklist[s],
+            layout = awful.widget.layout.horizontal.rightleft,
+        }
+    else
+        widgets["delorean"] = {
+            leftwidgets,
+            spacer, shutdown, spacer, reboot, spacer, udisks_glue.widget, 
+            s == 1 and mysystray or nil,
+            my_volume.widget, volume_label,
+            spicon, datewidget, spacer, calendar.widget,
+            spicon, netspeed_widget.widget, netstat_widget,
+            spicon, spacer, cpugraph.widget,
+            spicon, wifiwidget,
+            mytasklist[s],
+            layout = awful.widget.layout.horizontal.rightleft,
+        }
+    end
+
+    return widgets
+end
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     promptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
@@ -292,26 +341,7 @@ for s = 1, screen.count() do
     -- Create the wibox
     wibox[s] = awful.wibox({ position = "top", screen = s, bg = theme.bg_normal})
     -- Add widgets to the wibox - order matters
-    leftwidgets = {
-        taglist[s], spacer, layoutbox[s], spacer, 
-        promptbox[s],
-        layout = awful.widget.layout.horizontal.leftright
-    }
-    wibox[s].widgets = {
-        leftwidgets,
-        spacer, shutdown, spacer, reboot, spacer, udisks_glue.widget, 
-        s == 1 and mysystray or nil,
-        my_volume.widget, volume_label,
-        spicon, datewidget, spacer, calendar.widget,
-        spicon, wlan0.widget, netwidget,
-        spicon, 
-        --corewidget1.widget, corewidget2.widget, corewidget3.widget, corewidget4.widget, 
-        spacer, cpugraph.widget,
-        spicon, wifiwidget,
-        bat_widget,
-        mytasklist[s],
-        layout = awful.widget.layout.horizontal.rightleft,
-    }
+    wibox[s].widgets = get_widgets(s)
 end
 
 -- {{{ Mouse bindings
