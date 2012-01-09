@@ -54,7 +54,7 @@ end
 terminal = "urxvtcd"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-browser = "chromium"
+browser = "google-chrome"
 explorer = terminal .. " -e ranger"
 
 -- Default modkey.
