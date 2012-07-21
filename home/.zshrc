@@ -125,16 +125,43 @@ function ic_hh {
 
 autoload -U compinit
 compinit
-bindkey "^?" backward-delete-char
-bindkey '^[OH' beginning-of-line
-bindkey '^[OF' end-of-line
-bindkey '^[[5~' up-line-or-history
-bindkey '^[[6~' down-line-or-history
-bindkey '^[[3~'          delete-char
-bindkey '^[3;5~'         delete-char
-bindkey "^r" history-incremental-search-backward
-bindkey ' ' magic-space    # also do history expansion on space
-bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+# key bindings
+bindkey "e[1~" beginning-of-line
+bindkey "e[4~" end-of-line
+bindkey "e[5~" beginning-of-history
+bindkey "e[6~" end-of-history
+bindkey "e[3~" delete-char
+bindkey "e[2~" quoted-insert
+bindkey "e[5C" forward-word
+bindkey "eOc" emacs-forward-word
+bindkey "e[5D" backward-word
+bindkey "eOd" emacs-backward-word
+bindkey "ee[C" forward-word
+bindkey "ee[D" backward-word
+bindkey "^H" backward-delete-word
+# for rxvt
+bindkey "e[8~" end-of-line
+bindkey "e[7~" beginning-of-line
+# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+bindkey "eOH" beginning-of-line
+bindkey "eOF" end-of-line
+# for freebsd console
+bindkey "e[H" beginning-of-line
+bindkey "e[F" end-of-line
+# completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix
+
+#bindkey "^?" backward-delete-char
+#bindkey '^[OH' beginning-of-line
+#bindkey '^[OF' end-of-line
+#bindkey '^[[5~' up-line-or-history
+#bindkey '^[[6~' down-line-or-history
+#bindkey '^[[3~'          delete-char
+#bindkey '^[3;5~'         delete-char
+#bindkey "^r" history-incremental-search-backward
+#bindkey ' ' magic-space    # also do history expansion on space
+#bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
@@ -239,5 +266,11 @@ else
     PROMPT="%{$fg[red]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}\$(collapse_pwd)%{$reset_color%}\$(hg_prompt_info)
 $ "
 fi
+
+# Fullscreen only on one monitor
+export SDL_VIDEO_FULLSCREEN_HEAD=1
+
+# Fix to mouse problem on dosbox
+export SDL_VIDEO_X11_DGAMOUSE=0
 
 bash ~/.invaders

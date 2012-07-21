@@ -121,13 +121,13 @@ spicon.text = "<span color='#EEEE66'> | </span>"
   cpugraph:set_show_text(true)
   cpugraph:set_label("CPU $percent %")
   --bind top popup on the graph
-  blingbling.popups.htop(cpugraph.widget,
-    { 
-        title_color =beautiful.notify_font_color_1, 
-        user_color= beautiful.notify_font_color_2, 
-        root_color=beautiful.notify_font_color_3, 
-        terminal = terminal
-    })
+  --blingbling.popups.htop(cpugraph.widget,
+  --  { 
+  --      title_color =beautiful.notify_font_color_1, 
+  --      user_color= beautiful.notify_font_color_2, 
+  --      root_color=beautiful.notify_font_color_3, 
+  --      terminal = terminal
+  --  })
   vicious.register(cpugraph, vicious.widgets.cpu,'$1',2)
 
   corelabel=widget({ type = "textbox" })
@@ -153,12 +153,12 @@ spicon.text = "<span color='#EEEE66'> | </span>"
   netwidget = widget({ type = "textbox", name = "netwidget" })
   netwidget.text = "NET "
   --bind nestat popup on textbox 
-  blingbling.popups.netstat(netwidget,{ title_color = beautiful.notify_font_color_1, established_color= beautiful.notify_font_color_3, listen_color=beautiful.notify_font_color_2})
+  --blingbling.popups.netstat(netwidget,{ title_color = beautiful.notify_font_color_1, established_color= beautiful.notify_font_color_3, listen_color=beautiful.notify_font_color_2})
 
   wlan0 = blingbling.net.new()
   wlan0:set_height(18)
   --activate popup with ip informations on the net widget
-  wlan0:set_ippopup()
+  --wlan0:set_ippopup()
   wlan0:set_show_text(true)
   wlan0:set_v_margin(3)
   wlan0:set_interface("wlan0")
@@ -472,6 +472,8 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
+      properties = { floating = true } },
+    { rule = { class = "feh" },
       properties = { floating = true } },
 }
 -- }}}

@@ -65,6 +65,7 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias vi='vim'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -73,11 +74,18 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-export PATH=$PATH:/home/daniel/android/tools:/home/daniel/android/platform-tools:/home/daniel/private_code/go/bin:/home/daniel/bin
+export PATH=$PATH:/opt/java/jre/bin/:/home/daniel/private_code/go/bin:/home/daniel/bin
 
-export SDL_VIDEO_FULLSCREEN_HEAD=0
+# Fullscreen only on one monitor
+export SDL_VIDEO_FULLSCREEN_HEAD=1
 
-#xbindkeys
+# Fix to mouse problem on dosbox
+export SDL_VIDEO_X11_DGAMOUSE=0
+
+if [ -f "/usr/lib/tuenti_tools/env/aliases" ]
+then
+    . "/usr/lib/tuenti_tools/env/aliases"
+fi
 
 function ranger-cd {
   ranger --choosedir=/tmp/chosen
@@ -87,3 +95,6 @@ function ranger-cd {
   rm -f /tmp/chosen
 }
 bind '"\C-o":"ranger-cd\C-m"'
+
+alias rgrep="grep -r"
+export EDITOR=vim
