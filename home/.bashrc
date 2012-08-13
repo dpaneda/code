@@ -74,10 +74,11 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-export PATH=$PATH:/opt/java/jre/bin/:/home/daniel/private_code/go/bin:/home/daniel/bin
-
 # Fullscreen only on one monitor
 export SDL_VIDEO_FULLSCREEN_HEAD=1
+export PATH=$PATH:/opt/hiphop/bin:/home/daniel/private_code/go/bin:/home/daniel/bin
+
+export LD_LIBRARY_PATH=/opt/hiphop/lib
 
 # Fix to mouse problem on dosbox
 export SDL_VIDEO_X11_DGAMOUSE=0
