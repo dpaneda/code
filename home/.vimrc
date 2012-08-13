@@ -5,6 +5,7 @@ set softtabstop=2
 set autoindent
 set shiftround
 set background=dark
+set modeline
 
 "Color scheme af in colors dir
 "colorscheme af

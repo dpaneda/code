@@ -73,8 +73,9 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-export PATH=$PATH:/home/daniel/android/tools:/home/daniel/android/platform-tools:/home/daniel/private_code/go/bin:/home/daniel/bin
+export PATH=$PATH:/opt/hiphop/bin:/home/daniel/android/platform-tools:/home/daniel/private_code/go/bin:/home/daniel/bin
 
+export LD_LIBRARY_PATH=/opt/hiphop/lib
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 
 #xbindkeys
