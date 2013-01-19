@@ -76,9 +76,11 @@ fi
 
 # Fullscreen only on one monitor
 export SDL_VIDEO_FULLSCREEN_HEAD=1
-export PATH=$PATH:/opt/hiphop/bin:/home/daniel/private_code/go/bin:/home/daniel/bin
-
-export LD_LIBRARY_PATH=/opt/hiphop/lib
+PATH=$PATH:/opt/hiphop/bin
+PATH=$PATH:/home/daniel/private_code/go/bin
+PATH=$PATH:/home/daniel/bin
+PATH=$PATH:/home/daniel/.gem/ruby/1.9.1/bin
+export PATH
 
 # Fix to mouse problem on dosbox
 export SDL_VIDEO_X11_DGAMOUSE=0
