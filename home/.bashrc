@@ -87,3 +87,8 @@ function ranger-cd {
   rm -f /tmp/chosen
 }
 bind '"\C-o":"ranger-cd\C-m"'
+
+
+alias mcpartitioned="memcached -s /tmp/memcached_${USER}_partitioned_1.sock -m 16 -u nobody -a 777 -d"
+alias mcshared="memcached -s /tmp/memcached_${USER}_shared.sock -m 16 -u nobody -a 777 -d"
+alias dotags="ctags-exuberant -f tags -h \".php\" -R --exclude=\"\.hg\" --totals=yes --tag-relative=yes --PHP-kinds=+cf --regex-PHP='/abstract class ([^ ]*)/\1/c/' --regex-PHP='/interface ([^ ]*)/\1/c/' --regex-PHP='/(public |static |a    bstract |protected |private )+function ([^ (]*)/\2/f/'"

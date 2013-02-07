@@ -1,7 +1,7 @@
-set expandtab
-set tabstop=2
-set sw=2
-set softtabstop=2
+"set expandtab
+set tabstop=4
+set sw=4
+set softtabstop=4
 set autoindent
 set shiftround
 set background=dark
@@ -15,7 +15,7 @@ syntax on
 "be turned off.
 filetype plugin on
 
-set tw=80
+set tw=120
 set formatoptions-=t
 
 " show tab chars with ...>
@@ -87,3 +87,31 @@ set foldmethod=syntax   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=4         "this is just what i use
+
+" Some nice invocations for PHP files
+" run file with PHP CLI (<leader>p)
+:autocmd FileType php noremap <leader>p :w!<CR>:!php %<CR>
+" PHP parser check (<leader>l)
+:autocmd FileType php noremap <leader>l :!php -l %<CR>
+" run file with hiphop (<leader>o)
+:autocmd FileType php noremap <leader>o :!/opt/hiphop/bin/hphpi %<CR>
+" run file with hiphop on debug mode (<leader>k)
+:autocmd FileType php noremap <leader>k :!/opt/hiphop/bin/hphpi -m debug -f %<CR>
+
+:autocmd FileType php noremap <leader>rt :call VimuxRunCommand("/home/dpaneda/soa/BEFW/tests/test_runner.sh " . bufname("%"))<CR>
+:autocmd FileType php noremap <leader>rr :call VimuxRunLastCommand()<CR>
+:autocmd FileType php noremap <leader>rg :call VimuxCloseRunner()<CR>
+
+"Changing Leader Key
+let mapleader = ","
+
+" Set title to window
+set title
+"set mouse=a
+
+"Vimux config
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = 50
+
+"Enable vim-pathogen
+execute pathogen#infect()
