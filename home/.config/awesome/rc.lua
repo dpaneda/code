@@ -54,7 +54,7 @@ end
 terminal = "urxvtcd"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-browser = "chromium"
+browser = "google-chrome"
 explorer = terminal .. " -e ranger"
 
 -- Default modkey.
@@ -115,65 +115,40 @@ spicon.text = "<span color='#EEEE66'> | </span>"
 
 -- {{{ CPU usage
 -- Initialize widgets
-  cpugraph=blingbling.classical_graph.new()
-  cpugraph:set_width(100)
-  cpugraph:set_tiles_color("#00000022")
-  cpugraph:set_show_text(true)
-  cpugraph:set_label("CPU $percent %")
-  --bind top popup on the graph
-  blingbling.popups.htop(cpugraph.widget,
-    { 
-        title_color =beautiful.notify_font_color_1, 
-        user_color= beautiful.notify_font_color_2, 
-        root_color=beautiful.notify_font_color_3, 
-        terminal = terminal
-    })
-  vicious.register(cpugraph, vicious.widgets.cpu,'$1',2)
+cpugraph=blingbling.classical_graph.new()
+cpugraph:set_width(100)
+cpugraph:set_tiles_color("#00000022")
+cpugraph:set_show_text(true)
+cpugraph:set_label("CPU $percent %")
+vicious.register(cpugraph, vicious.widgets.cpu,'$1',2)
 
-  corelabel=widget({ type = "textbox" })
-  corelabel.text="<span color=\""..beautiful.textbox_widget_as_label_font_color.."\" "..pango_small..">Cores:</span>"
+corelabel=widget({ type = "textbox" })
+corelabel.text="<span color=\""..beautiful.textbox_widget_as_label_font_color.."\" "..pango_small..">Cores:</span>"
 
-  function my_core(core)
-    corewidget = blingbling.progress_graph.new()
-    corewidget:set_height(18)
-    corewidget:set_width(6)
-    corewidget:set_filled(true)
-    corewidget:set_h_margin(1)
-    corewidget:set_filled_color("#00000033")
-    vicious.register(corewidget, vicious.widgets.cpu, core)
-    
-    return corewidget
-  end
-
-  --corewidget1 = my_core("$2");
-  --corewidget2 = my_core("$3");
-  --corewidget3 = my_core("$4");
-  --corewidget4 = my_core("$5");
-
-  netstat_widget = widget({ type = "textbox", name = "netstat_widget" })
-  netstat_widget.text = "NET "
-  --bind nestat popup on textbox 
-  blingbling.popups.netstat(netstat_widget, 
-    { 
-        title_color = beautiful.notify_font_color_1, 
-        established_color= beautiful.notify_font_color_3, 
-        listen_color=beautiful.notify_font_color_2
-  })
-
+function my_core(core)
+  corewidget = blingbling.progress_graph.new()
+  corewidget:set_height(18)
+  corewidget:set_width(6)
+  corewidget:set_filled(true)
+  corewidget:set_h_margin(1)
+  corewidget:set_filled_color("#00000033")
+  vicious.register(corewidget, vicious.widgets.cpu, core)
+  
+  return corewidget
+end
 
 netspeed_widget = blingbling.net.new()
 netspeed_widget:set_height(18)
---activate popup with ip informations on the net widget
-netspeed_widget:set_ippopup()
 netspeed_widget:set_show_text(true)
 netspeed_widget:set_v_margin(3)
+
 if hostname == "delorean" then
     netspeed_widget:set_interface("wlan0")
 else
     netspeed_widget:set_interface("eth0")
 end
 
-if not hostname == "windy" then
+if hostname ~= "windy" then
     --Volume
     volume_label = widget({ type = "textbox"})
     volume_label.text='<span '..pango_small..'><span color="'..beautiful.textbox_widget_as_label_font_color..'">Vol.: </span></span>'
@@ -205,7 +180,7 @@ if hostname == "delorean" then
     wifiwidget.bg_image = image(config .. "/icons/wifi.png")
     wifiwidget.bg_align = "left"
     wifiwidget.bg_resize = true
-    vicious.register(wifiwidget, vicious.widgets.wifi, "    ${ssid}  ${link}/70", 5, "netspeed_widget")
+    vicious.register(wifiwidget, vicious.widgets.wifi, "    ${ssid}  ${link}/70", 5, "wlan0")
 end
 
 if hostname == "windy" then
@@ -296,20 +271,20 @@ function get_widgets (s)
             spacer, udisks_glue.widget, 
             s == 1 and mysystray or nil,
             spicon, datewidget, spacer, calendar.widget,
-            spicon, netspeed_widget.widget, netstat_widget,
+            spicon, netspeed_widget.widget,
             spicon, spacer, cpugraph.widget,
             spicon, batwidget, baticon,
             mytasklist[s],
             layout = awful.widget.layout.horizontal.rightleft,
         }
     else
-        widgets["delorean"] = {
+        widgets = {
             leftwidgets,
             spacer, shutdown, spacer, reboot, spacer, udisks_glue.widget, 
             s == 1 and mysystray or nil,
             my_volume.widget, volume_label,
             spicon, datewidget, spacer, calendar.widget,
-            spicon, netspeed_widget.widget, netstat_widget,
+            spicon, netspeed_widget.widget,
             spicon, spacer, cpugraph.widget,
             spicon, wifiwidget,
             mytasklist[s],
@@ -502,6 +477,8 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
+      properties = { floating = true } },
+    { rule = { class = "feh" },
       properties = { floating = true } },
 }
 -- }}}

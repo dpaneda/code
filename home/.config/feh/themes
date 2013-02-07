@@ -21,7 +21,8 @@
 # ====================
 
 
-feh --full-screen --hide-pointer --no-menus --auto-zoom
+#feh --full-screen --hide-pointer --no-menus --auto-zoom
+feh --auto-zoom --scale-down
 
 # Webcam mode, simply specify the url(s).
 # e.g. feh -Twebcam http://cam1 http://cam2
@@ -55,15 +56,15 @@ rfs --full-screen --hide-pointer --auto-zoom --randomize
 fs  --full-screen --hide-pointer --auto-zoom --sort filename
 
 thumb_s  --thumbnails --cache-thumbnails --thumb-width 128 --thumb-height 128 \
-         --limit-width 1024 --sort filename \
+         --limit-width 1600 --sort filename \
          --fontpath /usr/share/fonts/truetype/ttf-dejavu/ --font DejaVuSans/8
 
 thumb_b  --thumbnails --cache-thumbnails --thumb-width 256 --thumb-height 256 \
-         --limit-width 1024 --sort filename \
+         --limit-width 1600 --sort filename \
          --fontpath /usr/share/fonts/truetype/ttf-dejavu/ --font DejaVuSans/8
 
 thumb_s_nt --thumbnails --cache-thumbnails --thumb-width 128 --thumb-height 128 \
-           --limit-width 1024 --sort filename --index-name 0
+           --limit-width 1600 --sort filename --index-name 0
 
 thumb_b_nt --thumbnails --cache-thumbnails --thumb-width 256 --thumb-height 256 \
-           --limit-width 1024 --sort filename --index-name 0
+           --limit-width 1600 --sort filename --index-name 0

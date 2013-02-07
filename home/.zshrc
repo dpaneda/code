@@ -28,7 +28,7 @@ zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 zmodload -ap zsh/mapfile mapfile
 
-PATH="/home/daniel/private_code/go/bin:/home/daniel/shared/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
+PATH="/opt/hiphop/bin:/home/daniel/private_code/go/bin:/home/daniel/shared/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
 HISTFILE=$HOME/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
@@ -74,67 +74,49 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias dotags="ctags-exuberant -f tags -h \".php\" -R --exclude=\"\.hg\" --totals=yes --tag-relative=yes --PHP-kinds=+cf --regex-PHP='/abstract class ([^ ]*)/\1/c/' --regex-PHP='/interface ([^ ]*)/\1/c/' --regex-PHP='/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/'"
 
 # Hiphop stuuuuf
-
-export HH_BRANCH="/home/daniel/tuenti/be/"
-export HH_CONFIG_DIR="/home/daniel/tuenti/hiphop_config"
-export HH_PROD_CONFIG_DIR="/home/daniel/tuenti/hiphop_prod_config"
-export CMAKE_PREFIX_PATH="/home/daniel/dev/"
-export HPHP_HOME="/home/daniel/dev/hiphop-php"
-export HPHP_LIB=$HPHP_HOME
-export HPHP=$HPHP_HOME/src/hphp/hphp
-export HPHPI=$HPHP_HOME/src/hphpi/hphpi
+export HPHP_HOME="/opt/hiphop"
+export LD_LIBRARY_PATH=$HPHP_HOME/lib
 export MAKEOPTS="-j5 -pipe"
-
-function fcu_hh {
-  ln -sf /home/daniel/tuenti/hiphop_config/json_configuration configuration
-  ln -sf /home/daniel/tuenti/hiphop_config/server.hdf
-}
-
-function cu_hh {
-  ssh troy php /srv/www/dpaneda/0/scripts/cli/Spawn.php GenerateJsonConfig
-  scp 'troy:*json' $HH_CONFIG_DIR/json_configuration
-  ssh troy 'rm /home/dpaneda/*.json'
-  cp $HH_CONFIG_DIR/override/* $HH_CONFIG_DIR/json_configuration
-  ln -sf /home/daniel/tuenti/hiphop_config/json_configuration configuration
-  ln -sf /home/daniel/tuenti/hiphop_config/server.hdf
-}
-
-function prod_cu_hh {
-  rsync -r dev02:/srv/www/configuration $HH_PROD_CONFIG_DIR
-  cd $HH_PROD_CONFIG_DIR/json_configuration
-  php $HH_BRANCH/scripts/configuration/GenerateJsonConfig.php $HH_PROD_CONFIG_DIR/configuration
-  cp $HH_PROD_CONFIG_DIR/override/* .
-  cd -
-  ln -sf /home/daniel/tuenti/hiphop_config/json_configuration configuration
-  ln -sf /home/daniel/tuenti/hiphop_config/server.hdf
-}
-
-function ic_hh {
-  cd $HH_BRANCH
-  if [ ! -f auto_list ]
-  then
-    scripts/hiphop/hh_generator.py -e main/app/file-routing/hiphop.index.php -d . >auto_list
-  fi
-  $HPHP --input-list=auto_list -k 1 --log=3 -o ../be-hh --file-cache cache --revision "0" --sync-dir /tmp/hh_sync
-  cd ../be-hh
-  fcu_hh
-  ./program -m server -p 8080 -c server.hdf
-}
-
-# End of HipHop stuff
 
 autoload -U compinit
 compinit
-bindkey "^?" backward-delete-char
-bindkey '^[OH' beginning-of-line
-bindkey '^[OF' end-of-line
-bindkey '^[[5~' up-line-or-history
-bindkey '^[[6~' down-line-or-history
-bindkey '^[[3~'          delete-char
-bindkey '^[3;5~'         delete-char
-bindkey "^r" history-incremental-search-backward
-bindkey ' ' magic-space    # also do history expansion on space
-bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+# key bindings
+bindkey "e[1~" beginning-of-line
+bindkey "e[4~" end-of-line
+bindkey "e[5~" beginning-of-history
+bindkey "e[6~" end-of-history
+bindkey "e[3~" delete-char
+bindkey "e[2~" quoted-insert
+bindkey "e[5C" forward-word
+bindkey "eOc" emacs-forward-word
+bindkey "e[5D" backward-word
+bindkey "eOd" emacs-backward-word
+bindkey "ee[C" forward-word
+bindkey "ee[D" backward-word
+bindkey "^H" backward-delete-word
+# for rxvt
+bindkey "e[8~" end-of-line
+bindkey "e[7~" beginning-of-line
+# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+bindkey "eOH" beginning-of-line
+bindkey "eOF" end-of-line
+# for freebsd console
+bindkey "e[H" beginning-of-line
+bindkey "e[F" end-of-line
+# completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix
+
+#bindkey "^?" backward-delete-char
+#bindkey '^[OH' beginning-of-line
+#bindkey '^[OF' end-of-line
+#bindkey '^[[5~' up-line-or-history
+#bindkey '^[[6~' down-line-or-history
+#bindkey '^[[3~'          delete-char
+#bindkey '^[3;5~'         delete-char
+#bindkey "^r" history-incremental-search-backward
+#bindkey ' ' magic-space    # also do history expansion on space
+#bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
@@ -239,5 +221,11 @@ else
     PROMPT="%{$fg[red]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}\$(collapse_pwd)%{$reset_color%}\$(hg_prompt_info)
 $ "
 fi
+
+# Fullscreen only on one monitor
+export SDL_VIDEO_FULLSCREEN_HEAD=1
+
+# Fix to mouse problem on dosbox
+export SDL_VIDEO_X11_DGAMOUSE=0
 
 bash ~/.invaders

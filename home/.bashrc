@@ -65,6 +65,7 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias vi='vim'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -73,11 +74,21 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-export PATH=$PATH:/home/daniel/android/tools:/home/daniel/android/platform-tools:/home/daniel/private_code/go/bin:/home/daniel/bin
+# Fullscreen only on one monitor
+export SDL_VIDEO_FULLSCREEN_HEAD=1
+PATH=$PATH:/opt/hiphop/bin
+PATH=$PATH:/home/daniel/private_code/go/bin
+PATH=$PATH:/home/daniel/bin
+PATH=$PATH:/home/daniel/.gem/ruby/1.9.1/bin
+export PATH
 
-export SDL_VIDEO_FULLSCREEN_HEAD=0
+# Fix to mouse problem on dosbox
+export SDL_VIDEO_X11_DGAMOUSE=0
 
-#xbindkeys
+if [ -f "/usr/lib/tuenti_tools/env/aliases" ]
+then
+    . "/usr/lib/tuenti_tools/env/aliases"
+fi
 
 function ranger-cd {
   ranger --choosedir=/tmp/chosen
@@ -88,7 +99,8 @@ function ranger-cd {
 }
 bind '"\C-o":"ranger-cd\C-m"'
 
-
 alias mcpartitioned="memcached -s /tmp/memcached_${USER}_partitioned_1.sock -m 16 -u nobody -a 777 -d"
 alias mcshared="memcached -s /tmp/memcached_${USER}_shared.sock -m 16 -u nobody -a 777 -d"
 alias dotags="ctags-exuberant -f tags -h \".php\" -R --exclude=\"\.hg\" --totals=yes --tag-relative=yes --PHP-kinds=+cf --regex-PHP='/abstract class ([^ ]*)/\1/c/' --regex-PHP='/interface ([^ ]*)/\1/c/' --regex-PHP='/(public |static |a    bstract |protected |private )+function ([^ (]*)/\2/f/'"
+alias rgrep="grep -r"
+export EDITOR=vim

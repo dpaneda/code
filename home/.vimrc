@@ -5,6 +5,7 @@ set softtabstop=4
 set autoindent
 set shiftround
 set background=dark
+set modeline
 
 "Color scheme af in colors dir
 "colorscheme af
@@ -48,6 +49,7 @@ autocmd FileType make set noexpandtab shiftwidth=8
 
 "Auto Complete <c-x><c-o>
 autocmd FileType php set noexpandtab omnifunc=phpcomplete#CompletePHP
+autocmd FileType python set noexpandtab
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 " Delete trailing white space and ^M chars open/save
@@ -68,7 +70,7 @@ set backspace=eol,start,indent
 "inoremap <S-Tab> <C-D>
 
 "come back to the same location after editing
-set viminfo='10,\"100,:20,%,n~/.viminfo
+"set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
 
 :set errorformat=%m\ in\ %f\ on\ line\ %l
