@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dfxml xmloutputversion='1.0'>
+  <metadata 
+  xmlns='http://afflib.org/tcpflow/' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <dc:type>Feature Extraction</dc:type>
+  </metadata>
+  <creator version='1.0'>
+    <program>TCPFLOW</program>
+    <version>1.3.0</version>
+    <build_environment>
+      <compiler>GCC 4.7</compiler>
+    </build_environment>
+    <execution_environment>
+      <os_sysname>Linux</os_sysname>
+      <os_release>3.12.9-2-ARCH</os_release>
+      <os_version>#1 SMP PREEMPT Fri Jan 31 10:22:54 CET 2014</os_version>
+      <host>delorean</host>
+      <arch>x86_64</arch>
+      <command_line>tcpflow -i lo port 6767</command_line>
+      <uid>0</uid>
+      <start_time>2014-03-16T17:48:27Z</start_time>
+    </execution_environment>
+  </creator>
+  <configuration>
+  </configuration>
+  <fileobject>
+    <filename>127.000.000.001.45729-127.000.000.001.06767</filename>
+    <filesize>75</filesize>
+    <tcpflow startime='2014-03-16T18:48:30.543475Z' endtime='2014-03-16T18:48:30.800417Z' src_ipn='127.0.0.1' dst_ipn='127.0.0.1' packets='6' srcport='45729' dstport='6767' family='2' out_of_order_count='0' />
+  </fileobject>
+  <fileobject>
+    <filename>127.000.000.001.06767-127.000.000.001.45729</filename>
+    <filesize>181</filesize>
+    <tcpflow startime='2014-03-16T18:48:30.543490Z' endtime='2014-03-16T18:48:30.800505Z' src_ipn='127.0.0.1' dst_ipn='127.0.0.1' packets='7' srcport='6767' dstport='45729' family='2' out_of_order_count='0' />

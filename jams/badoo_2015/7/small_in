@@ -1,0 +1,1185 @@
+100
+5
+4 4
+O O O X
+O X O X
+O X O X
+M X B X
+10
+4 4
+O O O M
+O X O X
+M X O X
+O X B X
+30
+6 6
+O O O M X M
+O X O X X O
+M X O X X O
+O X O O O O
+X X X X X O
+B O O O M O
+50
+10 10
+O O O M X M X X X X
+O X O X X O X X X X
+M X O X X O X X X X
+O X O O O O X X X X
+X X X X X O X X X X
+B O O O M O O O M X
+O X X X X X X X O X
+O X X X X X X X M X
+O X O O O O O O O X
+O O O X X X X X X X
+36
+10 10
+X X X X X X X X X X 
+X X X O X O O O O X 
+X O M X X X O O X X 
+X O O O O X O O O X 
+X O O O O X O X O B 
+X O O X O O O M X X 
+X M X O O X O X O X 
+X O X O M O O O X X 
+X O O O X M O O X X 
+X X X X X X X X X X 
+24
+10 10
+X X X X X X X X X X 
+X M X O X X O X X X 
+X O X O O O X X X X 
+X O O X O O O O O X 
+X O O O O O O M M X 
+X O O O X O O O X X 
+X O O M X O O O X X 
+X X X O O O O X X X 
+X O O X O O X O O X 
+X X X X B X X X X X 
+38
+10 10
+X X X X X X X B X X 
+X O X X X O X M O X 
+X X M O X X X O O X 
+X O O O O O O X O X 
+X X X O X O O O O X 
+X O O X M O X O O X 
+X O O O X O O X O X 
+X O M O O O O X O X 
+X O X O X X O O O X 
+X X X X X X X X X X 
+29
+10 10
+X X X X X X X X X X 
+X O M O O O O X O X 
+X O X O O X M X X X 
+X O O O O X O O O X 
+X O X O O X O O O X 
+X O O X O O O O O X 
+X O O X O X X O O B 
+X O O M X X X X O X 
+X X X X O X M O O X 
+X X X X X X X X X X 
+19
+10 10
+X X X X X X X X X X 
+X M O O O O X X O X 
+B O M O O X X O X X 
+X O O X O O O X O X 
+X O O M X O X O X X 
+X O X X O X O O O X 
+X O O O O O O X X X 
+X O O O X O X X O X 
+X O X O X M O O O X 
+X X X X X X X X X X 
+22
+10 10
+X X X X X X X X X X 
+X M M O O X X X O X 
+X X X O X X X O O X 
+B O O O O X X O O X 
+X O O X O O M X X X 
+X O O O X O O X O X 
+X X O O O O O O X X 
+X O O O O O X X O X 
+X O X O O O O O X X 
+X X X X X X X X X X 
+26
+10 10
+X X X X X X B X X X 
+X O O O X O O O O X 
+X O O X X O O X X X 
+X X O X O X O O O X 
+X X O O O O O O X X 
+X O O O X X O X O X 
+X M M O O O O M O X 
+X O X X O X O X X X 
+X M O O O X O O M X 
+X X X X X X X X X X 
+18
+10 10
+X X X X X X X X X X 
+X O O O O X O O X X 
+X O X X O O X O X X 
+X X O O X O X O O X 
+X X O M O O O O X X 
+X X O X X O O O O X 
+X X X X O O X X O X 
+X O O O O O O O M X 
+X X O M O O O X O X 
+X X X X X B X X X X 
+23
+10 10
+X X X X X X X X X X 
+X X X X O O O O O X 
+X X X X M O X O X X 
+B O M O O X O O X X 
+X O O O O X X O O X 
+X O X O O X O O M X 
+X O O O O O O X X X 
+X M O O O O O O X X 
+X X M O X O O O O X 
+X X X X X X X X X X 
+18
+10 10
+X B X X X X X X X X 
+X O O O O X X O X X 
+X O O O O O O O O X 
+X O X O O X X X O X 
+X O O X X X X X O X 
+X O O M X M X O X X 
+X O O O X O X X X X 
+X O O O O M O O O X 
+X M O O X O O O O X 
+X X X X X X X X X X 
+17
+10 10
+X X X X X X X X X X 
+X O O O X X O X O X 
+X O O O O X O O O X 
+X M X O X O X O O X 
+X O X O O X O X X X 
+X X O O O X O X O X 
+X O X O O O M O X X 
+X O X O O O O X X X 
+X X X M O O O O O X 
+X X X X X B X X X X 
+19
+10 10
+X X X X X B X X X X 
+X O X O X O O O X X 
+X O O O O O O O O X 
+X O O O X O O X O X 
+X O O X M O M O X X 
+X X O O X X O O O X 
+X O O M O M O X O X 
+X X X X X O X O X X 
+X O X O O O O M X X 
+X X X X X X X X X X 
+24
+10 10
+X X X X X X X X X X 
+X O O X O X O O O X 
+X X O X X M X O X X 
+X X X O O O X X X X 
+X O O X O O O O O X 
+X X O O O O M M O X 
+X O M X O O O O O X 
+X O O O X X X O X X 
+X O O O O O O O X X 
+X B X X X X X X X X 
+32
+10 10
+X X X X X X X X X X 
+X X O O X O O X O X 
+X O X O O O M O O X 
+X X O O O O O X X X 
+X X O O O O X M X X 
+X X O O O O O O O X 
+X X O M X O M X X X 
+X O O O X O O X X X 
+X O O O M O X O O X 
+X X B X X X X X X X 
+23
+10 10
+X X X X X X X X X X 
+X O M O O O O X O B 
+X O X O X O O X O X 
+X M O O O X O O O X 
+X X O X O O X X O X 
+X X X O O O X O O X 
+X O O X X O O O X X 
+X O X X O O O X O X 
+X O O O M X O X X X 
+X X X X X X X X X X 
+32
+10 10
+X X X X B X X X X X 
+X O O O O O O O X X 
+X O O X X O O O O X 
+X X M X O O O O O X 
+X O X O M O X O X X 
+X O X O X X O O X X 
+X O O O O O X X O X 
+X M X O O O X O O X 
+X X O X X O O X X X 
+X X X X X X X X X X 
+27
+10 10
+X X X X X X X X X X 
+X X X O O O O X O X 
+X O O O O X O X X X 
+X O O O O X O X O X 
+X M X O O O X X X X 
+X O X X X O O O O X 
+X O X X O X O O O X 
+X O O M O O O O O X 
+B O O O X X X O M X 
+X X X X X X X X X X 
+22
+10 10
+X X X X X X X X X X 
+X X X O X O M O X X 
+X M X O O X O O O X 
+X M O X X O O X O X 
+X O O O O O X X O X 
+B M X X X X X O M X 
+X O X X O O X O O X 
+X O O O O O O O O X 
+X O O O O O O O O X 
+X X X X X X X X X X 
+16
+10 10
+X X X X B X X X X X 
+X O O X O X X O O X 
+X X X O O M M O X X 
+X O X O O O O O O X 
+X X O X O O O O O X 
+X O O O O O O O O X 
+X O X X X X O X O X 
+X O O O X O M X O X 
+X X X O X O X M O X 
+X X X X X X X X X X 
+14
+10 10
+X X X X X X X X X X 
+X O O O X O O O O X 
+X X X O X X O X X X 
+X O O X O O O O O X 
+X O X X X O X O X X 
+X X O X O O O O M X 
+X O M X O O O O O X 
+X M O X O O O X O B 
+X X O O O X X O O X 
+X X X X X X X X X X 
+25
+10 10
+X X X X X X X X X X 
+X X X O O O O M O X 
+X X O X X O O X O X 
+X X X X X O O O O X 
+X O O X O O X X X X 
+X O O O O O O O O X 
+X O O M X O O O O B 
+X X O X O O X X O X 
+X O X M O O O O X X 
+X X X X X X X X X X 
+35
+10 10
+X X B X X X X X X X 
+X O O M O X X O O X 
+X O O O O O O O O X 
+X X X X O M O O O X 
+X M X X X X O O O X 
+X O O O X O O X O X 
+X O X O O O O X O X 
+X X O O O O X X O X 
+X X X O X M O O M X 
+X X X X X X X X X X 
+28
+10 10
+X X X X X X X X X X 
+B O X O X X O O O X 
+X M M O O M O O O X 
+X O O X X O O O O X 
+X O O O X O X X O X 
+X O X X O O M O O X 
+X O X O X O X O O X 
+X O O O X X X O O X 
+X O X M X X O O O X 
+X X X X X X X X X X 
+37
+10 10
+X X X X X X X X X X 
+X X O O O X X O X X 
+X X O O X O O O X X 
+X O M O X O X O O X 
+X O O O O O O X M X 
+X O O O O O O O X X 
+X O X M X O X O O B 
+X O X O O X X O X X 
+X O X O M O X O O X 
+X X X X X X X X X X 
+32
+10 10
+X X X X X X X X X X 
+X X O O X O O O X X 
+B O M O X O O M O X 
+X X X O O X O X M X 
+X X O O X O O O X X 
+X X O O O O X O X X 
+X O O X O X O O O X 
+X M O O X O O O O X 
+X X O O O O M O X X 
+X X X X X X X X X X 
+50
+10 10
+X B X X X X X X X X 
+X O O O X O O X M X 
+X O X O O O X O O X 
+X M X O O O O O O X 
+X X X M X O X O O X 
+X O O O X O X O O X 
+X O X O O X O O O X 
+X O O O X X O X X X 
+X X M O X O O M O X 
+X X X X X X X X X X 
+34
+10 10
+X X X X X X X X X X 
+X M O M O O O O X X 
+X O X O M O O O X X 
+X O O O O O X O X X 
+X O X O O X O X X X 
+X X M X O O X O O X 
+X O O M X O O X O X 
+X O X X X X O X O X 
+X O O O O O O O O X 
+X X X B X X X X X X 
+29
+10 10
+X X X X X X X B X X 
+X O O M X O X O X X 
+X O O O O O M O O X 
+X O M O O X X O O X 
+X O X X X O O O O X 
+X X O X X X O X O X 
+X O X X O X O X O X 
+X O O M M O O X O X 
+X O O O O O O O X X 
+X X X X X X X X X X 
+40
+10 10
+X X X X X X X X X X 
+X O O O O O O X M X 
+X O O X O M O X O X 
+X O M X X O M O O X 
+X X O O X O O X O X 
+X O O O X O X X M X 
+X X X X O O X X X X 
+X O X O O O O O O X 
+X O O O O O O X O X 
+X X X X B X X X X X 
+40
+10 10
+X X X X X X X X X X 
+X O O O X O X O X X 
+X O O X O O O O M X 
+B O O O O O O X O X 
+X O M O X O O O O X 
+X O X X M O O X X X 
+X O X O O O O X X X 
+X X X O O X O O X X 
+X O M O X O O M X X 
+X X X X X X X X X X 
+29
+10 10
+X X X B X X X X X X 
+X O X O X O O O X X 
+X O O O X O O X O X 
+X O O X O O X X O X 
+X M O O X M O X O X 
+X X X O O O X X O X 
+X O O O X O X X O X 
+X O M O X X M O O X 
+X O O O O O O O M X 
+X X X X X X X X X X 
+36
+10 10
+X X X X X X X X X X 
+X X O O X O O O O X 
+X X O M X X X M O X 
+X O O O X O O X O X 
+X M O O O X O O O X 
+X O O O O O O O O X 
+X O O O X X O O X X 
+X X O X X X O O O X 
+X O O M X O M X X X 
+X X X X X B X X X X 
+28
+10 10
+X X X X X X X X X X 
+B O O X X O X O X X 
+X O X O X O M O X X 
+X O O O O O O O X X 
+X X O O O X O O O X 
+X O X O O O O O O X 
+X X X X M X O O O X 
+X X O M X O M X O X 
+X X O O O O X O O X 
+X X X X X X X X X X 
+34
+10 10
+X X X X X X X X X X 
+X O X O X X O O O X 
+X O O X X O O X M B 
+X M X O M O X M O X 
+X O X O O O O X O X 
+X O O O O X O X O X 
+X O O O X O X O O X 
+X O X O O O O X O X 
+X O O X X O X O M X 
+X X X X X X X X X X 
+33
+10 10
+X X X X X X X X X X 
+X O X X O O O O O X 
+X O O X O O X X M X 
+X O X O X O O X X X 
+X O O O X O O X O X 
+X O X M O O X O O X 
+X O O X M O O O X X 
+B O O O O O O O M X 
+X X O X X O O X X X 
+X X X X X X X X X X 
+37
+10 10
+X X X X X X X X X X 
+X O O O O O O M X X 
+X X X O X X O X O X 
+X O O M X O X O M X 
+X O X O X O O M X X 
+X O O X O O O O O X 
+X O O X O O X O O X 
+X O O X M O X O O B 
+X O O O O X X X O X 
+X X X X X X X X X X 
+31
+10 10
+X X X X X X B X X X 
+X X O O X O O O O X 
+X O X O X O X X O X 
+X O O O O M X O O X 
+X O O O O X O X M X 
+X O O O O X O X M X 
+X O X O O X M O O X 
+X M O X O O O O X X 
+X O X O X X O O X X 
+X X X X X X X X X X 
+38
+10 10
+X X X X X X X X X X 
+X X M X X O O O X X 
+X X O X O X O X X X 
+X O O O O X X X O B 
+X X O O O O M O O X 
+X O O X O O O O O X 
+X X X O X X O O O X 
+X O O O X O X O O X 
+X O M O O O O M O X 
+X X X X X X X X X X 
+30
+10 10
+X B X X X X X X X X 
+X O O O O O O O O X 
+X O X X X X X O O X 
+X O X O X O O M O X 
+X X O X X O O O O X 
+X O O M O O X O O X 
+X O X X O X O O X X 
+X X O M O M O O O X 
+X O O X X O X O M X 
+X X X X X X X X X X 
+39
+10 10
+X X X X X X X X X X 
+X O X O M O O O O X 
+X X M O O O X O X X 
+X O X X X O O O O X 
+X O X O X O X O X X 
+X X O O X O O O X X 
+X O X O O X O O O X 
+X O O O O X O X X X 
+X M O X O O M O O X 
+X X X X X X X X B X 
+46
+10 10
+X X X X X X B X X X 
+X M X X X O O O O X 
+X O O O O O O X O X 
+X M X X X X X O O X 
+X X X X X O M O X X 
+X M O O O O X X X X 
+X X O X O X O X O X 
+X O X X O O M O X X 
+X X X X X O X O O X 
+X X X X X X X X X X 
+50
+10 10
+X X X X X X X X X X 
+X X X O X X O O O X 
+X O M O O O O X M X 
+X X O X O O X X X X 
+X X O O X X X M O X 
+X X X O X X O X O X 
+X M O O O X X X O X 
+X M X X O O O O O X 
+X X X X X O X O O X 
+X X X X X B X X X X 
+36
+10 10
+X X X X X X X X X X 
+X X O X X X X O X X 
+X X O X O O O X M X 
+X X X O O X X O O X 
+X O M O X X O M X X 
+X O O X O O O O X X 
+X M X X M X X O X X 
+X O O O X O O O X X 
+X X X O O O O X X X 
+X X X X X B X X X X 
+48
+10 10
+X X X X X X X X X X 
+X O X M O O X X X X 
+X X O X X O O X X X 
+X X O O X X O O O X 
+X X X X X O O O M X 
+X X X X X X X O X X 
+X O M X O O O O O X 
+X O O X O X O X O X 
+X X O O O X M X O X 
+X X X X X X X X B X 
+37
+10 10
+X X X X X X X X X X 
+X X O X O O O O X X 
+X X X X M X X O X X 
+X O X X X O O O X X 
+X M O O O O O O X X 
+X O O O X X X O O B 
+X M X X X X M X O X 
+X X X X O O O O O X 
+X X O O X X X X O X 
+X X X X X X X X X X 
+47
+10 10
+X X X X X X X X X X 
+X X O O O X X O O X 
+X X O X M O X X X X 
+X O O X O X X X O X 
+X O X X X M X O M X 
+X O O O O O X X O X 
+X X O X M X O O O X 
+X X X O O O O X X X 
+X X O M X O O X X X 
+X X X X X B X X X X 
+45
+10 10
+X X X X X X X X X X 
+X O O O O M O O O X 
+X O X X O X M X O B 
+X M X X M O X O O X 
+X X X O O X X O X X 
+X X X X X X O O O X 
+X X X X O O O X X X 
+X X O X X O O O X X 
+X O X O X O X O M X 
+X X X X X X X X X X 
+41
+10 10
+X X X X X X X X X X 
+X X O O O O O O O X 
+X M O X X X O O O X 
+X X X X X X X X O B 
+X X X O X X M O O X 
+X O X M X O O X X X 
+X X O O X O X O O X 
+X O O O O M X X X X 
+X X M O O O X X X X 
+X X X X X X X X X X 
+45
+10 10
+X B X X X X X X X X 
+X O O X O X O X X X 
+X X O X O X X X X X 
+X X O X O O O O X X 
+X X O X X O X M X X 
+X X O O O O X X X X 
+X M O O X X X M X X 
+X X O O O O X O X X 
+X O X O O O O O M X 
+X X X X X X X X X X 
+36
+10 10
+X X X X X X X X X X 
+X X X M O X X X X X 
+X O O O X O O X X X 
+B O X X O X O M X X 
+X O O O O X X O X X 
+X O O X O M O O X X 
+X O O X X X O X O X 
+X O X M M X X X X X 
+X O O O O O X X O X 
+X X X X X X X X X X 
+42
+10 10
+X X X X B X X X X X 
+X O O X O O O X X X 
+X X X X X O X O O X 
+X M O M O O O O O X 
+X O O O O O X X O X 
+X X O X X O X M O X 
+X X O O X O X X X X 
+X O X O X M X X X X 
+X O M O X X X X X X 
+X X X X X X X X X X 
+44
+10 10
+X X X B X X X X X X 
+X O O M O O O X X X 
+X X X O X X O X X X 
+X O X O X O M O X X 
+X X O O X O X X M X 
+X X O X O O O O O X 
+X O O X X O O X X X 
+X O X X X X O X X X 
+X M O O M X X O O X 
+X X X X X X X X X X 
+44
+10 10
+X X X X X X X X X X 
+X X O O X X M O M X 
+X O O O M O X X O X 
+B O X O X O O O O X 
+X X O O O X X O M X 
+X X X O O O O X O X 
+X X O X X X O X O X 
+X X X X X X O O X X 
+X X O X X X O M X X 
+X X X X X X X X X X 
+34
+10 10
+X X X X X X X X X X 
+X X X X X M O O X X 
+X X X X X O X O M X 
+X O O O O X X X O X 
+X O X X O X O X O X 
+X O O X O O X O O X 
+X X M X O M X X O X 
+X X X O X M O X O B 
+X O X X O O O O O X 
+X X X X X X X X X X 
+44
+10 10
+X X X X X X X X X X 
+X O O O M O O X X X 
+X X O X O X O M X X 
+X O O X O O X X X X 
+X X O X X O X X M X 
+X X O X X O O X O X 
+X X M O X X O O O X 
+X X O O O O X O O X 
+X X X X O M X O X X 
+X X X X X X X B X X 
+39
+10 10
+X X X B X X X X X X 
+X O O O O O O O X X 
+X O X X X X X O O X 
+X O O X O O O O O X 
+X X O X X X O X X X 
+X M O X X O O O X X 
+X O O X X X O O O X 
+X O X O X X X X M X 
+X M X X X X X X X X 
+X X X X X X X X X X 
+40
+10 10
+X X X X X X X X X X 
+X X O X X O X O X X 
+X O X M O X X X X X 
+X M O X O X O X M X 
+X X O X O X O O O X 
+X X O X O X X M X X 
+B O O O O O O O X X 
+X O O X O X O O X X 
+X O X X X X O O M X 
+X X X X X X X X X X 
+37
+10 10
+X X X X X X X X X X 
+X X X X X O X X O X 
+X X X X X X O O O X 
+X O M O X M O X O X 
+X O X X O M X X O X 
+X O X X X X X X O X 
+X O O X O X X O O X 
+X X O O X O O O X X 
+X O X O O O O O X X 
+X X X X X B X X X X 
+43
+10 10
+X X X X X X X X X X 
+X X X X M O O O X X 
+X O X X X X O O X X 
+X M O O X X O M X X 
+X O X O O O X O O X 
+X X X O X O O O X X 
+X M X O O O X O X X 
+X O O O X X X O O B 
+X O X X X O X X X X 
+X X X X X X X X X X 
+40
+10 10
+X X X X X X X B X X 
+X O X O O X X O X X 
+X X X O X O O O O X 
+X X X X O O X X O X 
+X X O O O O X O O X 
+X M O X X X X O O X 
+X X O X X M X X O X 
+X O O M X O X O O X 
+X X X X X O O M X X 
+X X X X X X X X X X 
+19
+10 10
+X X X X X X X X X X 
+X X O X X X X X X X 
+X O M X O O O O X X 
+X O O O M X M O X X 
+X X X X O O O O O X 
+X O X X X O O X M X 
+X O O X O M O X X X 
+X X X X X O O O O X 
+X X O X X O O X O X 
+X X X X X B X X X X 
+20
+10 10
+X X X X X X X X B X 
+X O X X O X X O M X 
+X O X O X X X O X X 
+X M O X X O O O O X 
+X O O X O O X X X X 
+X O X X O O X O X X 
+X O X X O O M X O X 
+X O X O O X X X O X 
+X O M M O X X O X X 
+X X X X X X X X X X 
+22
+10 10
+X X X X X X B X X X 
+X X M O O M O O O X 
+X X O O X X O O X X 
+X O O X O O O O X X 
+X O M X X O O O X X 
+X O M O X O X O M X 
+X O X X X X X O X X 
+X O X X X X O X O X 
+X X X X O O X X X X 
+X X X X X X X X X X 
+32
+10 10
+X X X X X X X X X X 
+X X O O X O O X O X 
+X O X O X M O O X X 
+X X M O X O X X X X 
+X X O X X O O X X X 
+B O O X X O X M O X 
+X X O O O O O O O X 
+X X O O X X X M X X 
+X X X O X O O X X X 
+X X X X X X X X X X 
+28
+10 10
+X X X X X X X X X X 
+X O O X X O M O O X 
+X O X O X X M X X X 
+X X X O X X O O X X 
+X X O X X O O M X X 
+X O X O X O X O X X 
+B O O O O O X O O X 
+X M O O X O O X O X 
+X X X M X X X O X X 
+X X X X X X X X X X 
+19
+10 10
+X X X X X X X X X X 
+X X O X X O O X O X 
+X O M X O O X O X X 
+X X M X X O O M X X 
+X X O O X O O O O X 
+X O X O M O O X O X 
+X O X X X O O X O B 
+X O X X X X O O X X 
+X X O X X X X X O X 
+X X X X X X X X X X 
+23
+10 10
+X X X X X X X X X X 
+X M O O M O X X X X 
+X X O X O M O X X X 
+X O X X X O O O O X 
+X O O O O O O X O X 
+X M M X O O O O O X 
+X X X O O X X X X X 
+X X O X O X X X X X 
+X X X O O X O X X X 
+X X X X B X X X X X 
+28
+10 10
+X X X X X X X X X X 
+X M O O X O X X O X 
+X X O O O X X O X X 
+X O X X O O X O X X 
+X O X O X O X O O B 
+X O X X O O M O X X 
+X X X X X O O M O X 
+X O O X O M X X X X 
+X X O X X X O X O X 
+X X X X X X X X X X 
+15
+10 10
+X X X X X X X X X X 
+X O X X O O O O O X 
+B O O O X O M O O X 
+X X X O X O M O O X 
+X O O M O M X O O X 
+X O X X X X X O X X 
+X X X O O X X M X X 
+X X X O X X X X X X 
+X O O O O X X X X X 
+X X X X X X X X X X 
+21
+10 10
+X X X X X X X X X X 
+X O X X X X X X X X 
+X X O X M O M X X X 
+X O X X X O O X X X 
+X X O M X O M O X X 
+X X O O O O O O O B 
+X O X O X O O X X X 
+X O O O O X X O O X 
+X X O O O X X O X X 
+X X X X X X X X X X 
+27
+10 10
+X X X X X X X X X X 
+X X O X X O X O O X 
+X X O O O O X X X X 
+X X O O X X O O O B 
+X X M O O O X O O X 
+X X O O X O O O O X 
+X X X X X X X O O X 
+X O X X X X X X O X 
+X O X X O X X X M X 
+X X X X X X X X X X 
+20
+10 10
+X X X X X X X X X X 
+X O M X O X O O X X 
+X O X O O O X X O X 
+X O O O O M X X X X 
+X X X O X X O O O X 
+X X O O X X X X X X 
+X O O X X X X O O X 
+X X O O X X X X O X 
+X X X O O O X X O X 
+X X X B X X X X X X 
+23
+10 10
+X X X X X X X X X X 
+X X O O X X X M O X 
+X X O X X X O O X X 
+X O O O X X O O X X 
+X X O O O X O X X X 
+X X M X M X O X X X 
+B O O X O O O X O X 
+X X O X X X O O O X 
+X X X O X X O O O X 
+X X X X X X X X X X 
+18
+10 10
+X X X X X X X X X X 
+X O X O O O X X X X 
+X O O X X O X X O B 
+X O X O O O X X O X 
+X X X O X X M X O X 
+X X X X O M O O O X 
+X X O O X X O O M X 
+X O X X X O O O O X 
+X X O X X X O X M X 
+X X X X X X X X X X 
+27
+10 10
+X X X X B X X X X X 
+X X X O O X X O X X 
+X O X O O O X X X X 
+X O X X O O O O O X 
+X X O X O O O M X X 
+X O X X M X O O X X 
+X M O X M M X X O X 
+X O O O O X X X X X 
+X X O X O O X X O X 
+X X X X X X X X X X 
+25
+10 10
+X X X X X X X X X X 
+X X X O X M X X O X 
+X X O O X O O X O X 
+X O X X X X O O O X 
+B O M X O O X O O X 
+X M O O O O O O M X 
+X O X X O X X X X X 
+X X X O X O O X O X 
+X X X O X X O X X X 
+X X X X X X X X X X 
+26
+10 10
+X X X X X X X X X X 
+X O O X O X X X X X 
+X O O M O O O O O B 
+X X O O X O X O X X 
+X X O X X O M X O X 
+X X X O X O O O O X 
+X X X O O O X O X X 
+X X X O X X X M X X 
+X X M O O M O X X X 
+X X X X X X X X X X 
+23
+10 10
+X X X X X X X X X X 
+X O X O X X X X O X 
+X M O X O X X O O X 
+X O M X X X X X X X 
+X X O X X O X X O X 
+X X O O X O X O O X 
+X O O O X X O X X X 
+X O O M O O X O O B 
+X X O X X O O O X X 
+X X X X X X X X X X 
+25
+10 10
+X X X X X X X X X X 
+X O O O O X O X O X 
+B O X M X X O X X X 
+X O X X M O O X O X 
+X O O O O O M O O X 
+X X O X O X X X O X 
+X O O O X X X X X X 
+X X O X X O X X X X 
+X O X X O X O X X X 
+X X X X X X X X X X 
+27
+10 10
+X X X X X X X B X X 
+X O X X X X O M O X 
+X X X O X X O X O X 
+X X M O M O X O O X 
+X X X X X O O O X X 
+X O O X X M X O X X 
+X X O X O X X O X X 
+X X X M O O O O O X 
+X O O O O O O X X X 
+X X X X X X X X X X 
+24
+10 10
+X X X X X X X X X X 
+X X X O X X O X M X 
+X X X X X M O M M X 
+X X X X X X X X O B 
+X O O O X O O X O X 
+X O O O O X X X O X 
+X X O X X X O O O X 
+X O O O O O M X X X 
+X O O O O X O X O X 
+X X X X X X X X X X 
+33
+10 10
+X X X X X X X X X X 
+X X O O O O O O O X 
+X O O O X X M X X X 
+X X X O X X O X X X 
+X X X O X X X X O X 
+X O O M O O O O X X 
+X M X O O X X X X X 
+X O X O O X M X O X 
+X O O X O O M X X X 
+X X X X X B X X X X 
+24
+10 10
+X X X X X B X X X X 
+X X X M X O X X O X 
+X X O O O O X O X X 
+X O O X O O X O X X 
+X O X O M X X M M X 
+X O X O M O X O X X 
+X O X X X O O O O X 
+X O X X O X X O X X 
+X O X O O X O X X X 
+X X X X X X X X X X 
+23
+10 10
+X X X X X X B X X X 
+X X O X X O M O X X 
+X O O X X O X X O X 
+X O M X X O X X X X 
+X O O O O O X X X X 
+X X X O O O X O X X 
+X X X O X X X O X X 
+X X O O O X O X O X 
+X X O O O M X O O X 
+X X X X X X X X X X 
+28
+10 10
+X X X X X X X X X X 
+X O O X X X O O M X 
+X O O O X X O X X X 
+X M X O O O O X X X 
+X X X M O O O X O X 
+X X O M O O X O X X 
+X O X X O O X X X X 
+X X X O O O X O X X 
+X X X O O O X X X X 
+X X X X B X X X X X 
+16
+10 10
+X X X X X X X X X X 
+X X X O O X X X X X 
+X O X O X O X O X X 
+X X O O M O X X O X 
+X O M X O X X O O X 
+X O O X O O O X X X 
+X M X O X X M O O B 
+X O O M X O X O O X 
+X O O X X X X X O X 
+X X X X X X X X X X 
+26
+10 10
+X X X X X X X X X X 
+X X X X X X O X X X 
+X O X M O O X X O X 
+X X O M X O O M X X 
+X X O X X O O X X X 
+X O X O X O O X O X 
+X O X X O M X O O X 
+X O X X X O X O X X 
+B M O O O O O O O X 
+X X X X X X X X X X 
+15
+10 10
+X X X X X X X X X X 
+X X X X M O X O X X 
+X O X X O O X X X X 
+X X X X O O O X X X 
+X X M X O O X O O X 
+X X O O O O O O O X 
+X O X X O X X O O X 
+X O X X O O O X O B 
+X X X X O X X X O X 
+X X X X X X X X X X 
+19
+10 10
+X X X X X X B X X X 
+X X X M M X O O O X 
+X O X X O O X O X X 
+X X X O O M M O O X 
+X O X X X X O X X X 
+X O O O O O O X O X 
+X X X O X O M O X X 
+X X O X O X X X O X 
+X O O X X X O X O X 
+X X X X X X X X X X 
+14
+10 10
+X X X X X X X X X X 
+X O X X X X X O X X 
+X X O O X X X X O X 
+X O X X X X X O X X 
+X O O O O O O X O X 
+X O X M O X O O X X 
+X O X X O X X M X X 
+X X O O O M O O O X 
+X O X O X X O M O X 
+X X X B X X X X X X 
+16
+10 10
+X X X X X X X X X X 
+X X X O X X O X X X 
+X X O O X X X X O X 
+X O X X O X O O O X 
+X O O O O O X X O X 
+X O O X X M O O X X 
+X O X X O X X O O X 
+B O X O X M O O O X 
+X X X X X X O X X X 
+X X X X X X X X X X 
+30
+10 10
+X X X X X X X X B X 
+X X O X X O O O O X 
+X X X O O O X X O X 
+X X M O X X X X X X 
+X X M X X O X O O X 
+X X O X O O O M X X 
+X O O O O O O X X X 
+X O O X M X O X O X 
+X O X X X O X O X X 
+X X X X X X X X X X 
+25
+10 10
+X X X X X X X X X X 
+X X X X O X X O O X 
+X X X O X O O X O X 
+X X X O O M X X X X 
+X O O X O O X X X X 
+X O O O O O X M O X 
+X X O X O O O O X X 
+X X X O X O O X O X 
+X X X M O O X X X X 
+X X X X B X X X X X 
+32
+10 10
+X X X B X X X X X X 
+X X X O O O X O X X 
+X X X M O X O X X X 
+X X O X O M X O X X 
+X O O O O X M O X X 
+X X X O X X O O X X 
+X O O O O X X O O X 
+X X M X O O X O O X 
+X X X O X O O M X X 
+X X X X X X X X X X 
+20
+10 10
+X X X X X X X X X X 
+X X X O X X X O X X 
+X X O X X X X O X X 
+X X O O O X X X X X 
+X X O O M X O X X X 
+X O O X X O X X X X 
+X O X O X X M O O X 
+B O O O X X O O X X 
+X O O O O O O O O X 
+X X X X X X X X X X 
+70
+10 10
+X X X X X X X X X X 
+X M O O O O O O M X 
+X X X X O O X X X X 
+X M O O O O O O M X 
+X X X X O B X X X X 
+X M O O O O O O M X 
+X X X X O O X X X X 
+X M O O O O O O M X 
+X X X X M M X X X X 
+X X X X X X X X X X 
