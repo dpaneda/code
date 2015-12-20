@@ -7,7 +7,6 @@ local table = table
 local type=type
 local cairo = require "oocairo"
 local capi = { image = image, widget = widget }
-local layout = require("awful.widget.layout")
 
 ---A graph widget that uses tiles to represent data
 module("blingbling.tiled_graph")
@@ -348,7 +347,7 @@ function new(args)
         t_graph["set_" .. prop] = _M["set_" .. prop]
     end
 
-    t_graph.layout = args.layout or layout.horizontal.leftright
+    t_graph.layout = args.layout or wibox.layout.fixed.horizontal()
 
     return t_graph
 end

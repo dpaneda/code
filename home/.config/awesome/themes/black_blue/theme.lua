@@ -13,6 +13,7 @@ dgrey="#333333"
 white="#ffffff"
 
 alpha="dd"
+local awful = require("awful")
 
 --bash colors
 --add the following lines in your bashrc
@@ -49,7 +50,7 @@ config_dir = awful.util.getdir("config")
 
 theme = {}
 
-theme.font          = "Terminus 7"
+theme.font          = "Terminus 9"
 
 theme.bg_normal     = black 
 theme.bg_focus      = black 

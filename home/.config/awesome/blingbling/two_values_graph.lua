@@ -7,7 +7,6 @@ local table = table
 local type=type
 local cairo = require "oocairo"
 local capi = { image = image, widget = widget }
-local layout = require("awful.widget.layout")
 local os = require("os")
 module("blingbling.two_values_graph")
 
@@ -339,7 +338,7 @@ function new(args)
         twov_graph["set_" .. prop] = _M["set_" .. prop]
     end
 
-    twov_graph.layout = args.layout or layout.horizontal.leftright
+    twov_graph.layout = args.layout or wibox.layout.fixed.horizontal()
 
     return twov_graph
 end

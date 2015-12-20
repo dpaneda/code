@@ -1,0 +1,44 @@
+[ui]
+username = dpaneda@tuenti.com
+merge = internal:merge
+editor = vim
+
+[extensions]
+## hg view
+hgext.hgk =
+hgext.color =
+mq =
+inotify =
+hgext.bookmarks =
+hgext.graphlog =
+transplant=
+pager =
+purge =
+
+[pager]
+pager = LESS='FSRX' less
+ignore = version, update, server, record
+
+[inotify]
+autostart = False
+
+[color]
+## Note: black bold looks gray! awesome :)
+mode = auto
+status.modified = magenta bold
+status.added    = green   bold
+status.removed  = red     bold
+status.deleted  = cyan    bold
+status.unknown  = black   bold
+status.ignored  = black   bold
+diff.trailingwhitespace = bold red_background
+
+[alias]
+info = paths default
+unmerged = glog -r "branch(.) and not ancestors(integration) and not merge()"
+unmerged_all = glog -r "branch(.) and not ancestors(integration)"
+last_merge = glog -r "max(branch(.) and ancestors(integration))"
+
+[bookmarks]
+track.current = True
+track.current = True

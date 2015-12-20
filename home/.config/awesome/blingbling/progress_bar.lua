@@ -7,7 +7,6 @@ local table =table
 local type=type
 local cairo = require("oocairo")
 local capi = { image = image, widget = widget }
-local layout = require("awful.widget.layout")
 
 ---A progressbar widget which looks like a cylinder
 module("blingbling.progress_bar")
@@ -276,7 +275,7 @@ function new(args)
         p_bar["set_" .. prop] = _M["set_" .. prop]
     end
 
-    p_bar.layout = args.layout or layout.horizontal.leftright
+    p_bar.layout = args.layout or wibox.layout.fixed.horizontal()
     return p_bar
 end
 

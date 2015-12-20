@@ -6,14 +6,14 @@ local type = type
 local os = require('os')
 local wibox = wibox
 local widget = widget
-local layout = require('awful.widget.layout')
 local string =string
 local pairs = pairs
 local ipairs = ipairs
 local tonumber = tonumber
 local helpers = require('blingbling.helpers')
 local blingbling = { layout = require('blingbling.layout'), menu = require("blingbling.menu") }
-local margins = awful.widget.layout.margins
+local wibox = require("wibox")
+local margins = wibox.layout.margin()
 local setmetatable = setmetatable
 local beautiful = require('beautiful')
 ---A calendar widget

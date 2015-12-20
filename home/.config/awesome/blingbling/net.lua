@@ -11,8 +11,8 @@ local pairs =pairs
 local math = math
 local type=type
 local cairo = require("oocairo")
-local capi = { image = image, widget = widget, timer =timer }
-local layout = require("awful.widget.layout")
+local wibox = require("wibox")
+local capi = { image = image, widget = wibox.widget, timer =timer }
 
 ---Net widget
 module("blingbling.net")
@@ -462,7 +462,7 @@ function new(args)
     if width < 6 or height < 6 then return end
 
     local n_graph = {}
-    n_graph.widget = capi.widget(args)
+    n_graph.widget = capi.widget.imagebox(args)
     n_graph.widget.resize = false
 
     data[n_graph] = { width = width, height = height, value = 0 ,nets={}}
@@ -473,7 +473,7 @@ function new(args)
         n_graph["set_" .. prop] = _M["set_" .. prop]
     end
 
-    n_graph.layout = args.layout or layout.horizontal.leftright
+    n_graph.layout = args.layout or wibox.layout.fixed.horizontal()
     update_net(n_graph)
 --    set_ippopup(n_graph)
     return n_graph

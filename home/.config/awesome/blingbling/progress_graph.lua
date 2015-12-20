@@ -6,7 +6,6 @@ local math = math
 local type=type
 local cairo = require("oocairo")
 local capi = { image = image, widget = widget }
-local layout = require("awful.widget.layout")
 
 ---A progressbar widget
 module("blingbling.progress_graph")
@@ -371,7 +370,7 @@ function new(args)
         p_graph["set_" .. prop] = _M["set_" .. prop]
     end
 
-    p_graph.layout = args.layout or layout.horizontal.leftright
+    p_graph.layout = args.layout or wibox.layout.fixed.horizontal()
 
     return p_graph
 end

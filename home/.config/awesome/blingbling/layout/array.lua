@@ -6,8 +6,9 @@ local table = table
 local math = math
 local helpers = require('blingbling.helpers')
 local util = require("awful.util")
-local default = require("awful.widget.layout.default")
-local margins = awful.widget.layout.margins
+local wibox = require("wibox")
+local default = wibox.layout.base
+local margins = wibox.layout.margin()
 ---Array Layout
 module("blingbling.layout.array")
 

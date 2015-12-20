@@ -6,9 +6,10 @@ local ipairs = ipairs
 local math = math
 local type=type
 local cairo = require("oocairo")
-local capi = { image = image, widget = widget, timer = timer }
-local layout = require("awful.widget.layout")
 local string = require("string")
+local wibox = require("wibox")
+local widget = wibox.widget
+local capi = { image = image, widget = widget.imagebox(), timer = timer }
 ---A graphical widget dedicated to the sound on your system.
 module("blingbling.volume")
 
@@ -465,7 +466,7 @@ function new(args)
     for _, prop in ipairs(properties) do
         v_graph["set_" .. prop] = _M["set_" .. prop]
     end
-    v_graph.layout = args.layout or layout.horizontal.leftright
+    v_graph.layout = args.layout or wibox.layout.fixed.horizontal()
     return v_graph
 end
 

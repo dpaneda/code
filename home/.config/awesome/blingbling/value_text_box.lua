@@ -7,7 +7,6 @@ local table =table
 local type=type
 local cairo = require("oocairo")
 local capi = { image = image, widget = widget }
-local layout = require("awful.widget.layout")
 
 ---A text box that can display value and text with colors. 
 module("blingbling.value_text_box")
@@ -320,7 +319,7 @@ function new(args)
         vt_box["set_" .. prop] = _M["set_" .. prop]
     end
 
-    vt_box.layout = args.layout or layout.horizontal.leftright
+    vt_box.layout = args.layout or wibox.layout.fixed.horizontal()
 
     return vt_box
 end

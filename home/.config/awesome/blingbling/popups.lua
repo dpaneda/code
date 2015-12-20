@@ -89,7 +89,7 @@ local function get_netinfo( my_title_color, my_established_color, my_listen_colo
   str=colorize(str,"Local Address", my_title_color)
   str=colorize(str,"Foreign Address", my_title_color)
   str=colorize(str,"State", my_title_color)
-  str=colorize(str,"PID\/Program name", my_title_color)
+  str=colorize(str,"PID/Program name", my_title_color)
   str=colorize(str,"Security Context", my_title_color)
   str=colorize(str,"ESTABLISHED", my_established_color)
   str=colorize(str,"LISTEN", my_listen_color)

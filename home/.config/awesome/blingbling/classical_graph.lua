@@ -6,8 +6,9 @@ local math = math
 local table = table
 local type=type
 local cairo = require "oocairo"
-local capi = { image = image, widget = widget }
-local layout = require("awful.widget.layout")
+local wibox = require "wibox"
+local capi = { image = image, widget = wibox.widget }
+local awful = require("awful")
 
 ---A graph widget.
 module("blingbling.classical_graph")
@@ -354,7 +355,6 @@ end
 
 function new(args)
     local args = args or {}
-    args.type = "imagebox"
 
     local width = args.width or 100
     local height = args.height or 20
@@ -362,7 +362,7 @@ function new(args)
     if width < 5 or height < 5 then return end
 
     local graph = {}
-    graph.widget = capi.widget(args)
+    graph.widget = awful.widget.graph(args)
     graph.widget.resize = false
 
     data[graph] = { width = width, height = height, values = {} }
@@ -374,7 +374,7 @@ function new(args)
         graph["set_" .. prop] = _M["set_" .. prop]
     end
 
-    graph.layout = args.layout or layout.horizontal.leftright
+    graph.layout = args.layout or wibox.layout.fixed.horizontal()
 
     return graph
 end

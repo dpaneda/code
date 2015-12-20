@@ -7,7 +7,6 @@ local table = table
 local type=type
 local cairo = require "oocairo"
 local capi = { image = image, widget = widget, timer=timer }
-local layout = require("awful.widget.layout")
 ---Not ready for now --
 module("blingbling.clock")
 
@@ -162,7 +161,7 @@ function new(args)
         c_graph["set_" .. prop] = _M["set_" .. prop]
     end
 
-    c_graph.layout = args.layout or layout.horizontal.leftright
+    c_graph.layout = args.layout or wibox.layout.fixed.horizontal()
     update_clock(c_graph)
     return c_graph
 end

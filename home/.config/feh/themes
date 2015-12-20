@@ -68,3 +68,5 @@ thumb_s_nt --thumbnails --cache-thumbnails --thumb-width 128 --thumb-height 128 
 
 thumb_b_nt --thumbnails --cache-thumbnails --thumb-width 256 --thumb-height 256 \
            --limit-width 1600 --sort filename --index-name 0
+
+pron -t -Sfilename -E 128 -y 128 -W 1024 -P -C /usr/share/fonts/TTF -e Vera/0 

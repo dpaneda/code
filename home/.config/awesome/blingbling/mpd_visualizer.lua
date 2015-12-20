@@ -11,7 +11,6 @@ local tonumber=tonumber
 local type=type
 local cairo = require "oocairo"
 local capi = { image = image, widget = widget, timer = timer }
-local layout = require("awful.widget.layout")
  
 ---Mpd widget that use mpd vizualiser functionality.
 module("blingbling.mpd_visualizer")
@@ -554,7 +553,7 @@ function new(args)
         mpd_graph["set_" .. prop] = _M["set_" .. prop]
     end
 
-    mpd_graph.layout = args.layout or layout.horizontal.leftright
+    mpd_graph.layout = args.layout or wibox.layout.fixed.horizontal()
     return mpd_graph
 end
 

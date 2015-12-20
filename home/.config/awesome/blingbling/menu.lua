@@ -33,7 +33,8 @@ local capi =
 }
 local util = require("awful.util")
 local tags = require("awful.tag")
-local layout = require("awful.widget.layout")
+local wibox = require("wibox")
+local margin = wibox.layout.margin()
 local awbeautiful = require("beautiful")
 local tonumber = tonumber
 local helpers=require("blingbling.helpers")
@@ -238,9 +239,9 @@ local function add_item(data, num, item_info)
         end
         iconbox = widget { type = "imagebox" }
         iconbox.image = icon
-        layout.margins[label] = { left = 2 }
+        margin:set_left(2)
     else
-        layout.margins[label] = { left = data.h + 2 }
+        margin:set_left(data.h + 2)
     end
 
     item:buttons(bindings)

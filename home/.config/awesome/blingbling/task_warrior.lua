@@ -38,7 +38,7 @@ local function generate_tasks_management_submenu(tw_menu, task_id)
 end
 local function get_tasks(tw_menu, project)
   local tasks={}
-  if project=="\(none\)" then
+  if project=="(none)" then
     project=""
   end
   local my_tasks=awful.util.pread("task rc.defaultwidth=0 project:\"".. project.."\" minimal")
