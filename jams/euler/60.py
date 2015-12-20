@@ -4,7 +4,7 @@ import math
 import itertools
 
 def is_prime(n):
-  for m in range(2, 1 + int(math.sqrt(n))):
+  for m in xrange(2, 1 + int(math.sqrt(n))):
     if n % m == 0:
       return False
   return True
@@ -27,6 +27,7 @@ def remarkable(primes):
       return False
   return True
 
+
 primes = []
 
 n = 1
@@ -47,3 +48,4 @@ for comb in itertools.combinations(primes, 2):
 
 print(lowest)
 print(num_comb)
+

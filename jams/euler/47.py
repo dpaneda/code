@@ -34,14 +34,16 @@ def factorize(n):
 SIZE = 4
 sizes = []
 
-for n in range(1, 999999999):
-  s = factorize(n)
-  sizes.append(len(s))
+#for n in range(1, 999999999):
+#  s = factorize(n)
+#  sizes.append(len(s))
+#
+#  if len(sizes) > SIZE:
+#    sizes.pop(0)
+#
+#  if len(sizes) == SIZE and min(sizes) == SIZE and max(sizes) == SIZE:
+#    break
+#
+#print(n - SIZE + 1)
 
-  if len(sizes) > SIZE:
-    sizes.pop(0)
-
-  if len(sizes) == SIZE and min(sizes) == SIZE and max(sizes) == SIZE:
-    break
-
-print(n - SIZE + 1)
+print factorize(8532988864419328904093708339647638149986647745362001197797314494078355275500880794558784601)
