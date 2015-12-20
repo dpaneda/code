@@ -4,12 +4,10 @@ import sys
 import math
 import pdb
 
-f = open(sys.argv[1])
-
-num = int(f.readline())
+num = int(sys.stdin.readline())
 
 for numcase in range(1, num+1):
-	case = f.readline().split()
+	case = sys.stdin.readline().split()
 	source_number = case[0]
 
 	s,t = {},{}

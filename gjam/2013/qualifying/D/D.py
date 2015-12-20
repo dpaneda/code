@@ -61,4 +61,4 @@ def Solve():
 num = int(sys.stdin.readline())
 
 for case in range(1, num + 1):
-    print "Case #%d: %s" % (case, Solve())
+    print("Case #%d: %s" % (case, Solve()))
