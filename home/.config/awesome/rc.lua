@@ -97,7 +97,6 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
@@ -397,6 +396,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
+      properties = { floating = true } },
+    { rule = { class = "<untitled>" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },

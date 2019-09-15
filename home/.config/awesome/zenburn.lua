@@ -11,7 +11,7 @@ theme.confdir = awful.util.getdir("config")
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Terminus 8"
+theme.font      = "xos4 Terminus 8"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"

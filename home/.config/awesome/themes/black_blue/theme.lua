@@ -50,7 +50,7 @@ config_dir = awful.util.getdir("config")
 
 theme = {}
 
-theme.font          = "Terminus 9"
+theme.font          = "xos4 Terminus 9"
 
 theme.bg_normal     = black 
 theme.bg_focus      = black 
