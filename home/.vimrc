@@ -1,4 +1,4 @@
-"set expandtab
+set expandtab
 set tabstop=4
 set sw=4
 set softtabstop=4
@@ -10,6 +10,7 @@ set modeline
 "Color scheme af in colors dir
 "colorscheme af
 syntax on
+"set termguicolors
 
 "Increases compatability for
 "vims where ftplugin might
@@ -39,7 +40,7 @@ autocmd FileType c,cpp,slang set cindent
 
 "Auto Complete <c-x><c-o>
 autocmd FileType php set noexpandtab omnifunc=phpcomplete#CompletePHP
-autocmd FileType python set noexpandtab
+autocmd FileType python set expandtab
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 set incsearch
@@ -69,7 +70,8 @@ set pastetoggle=<f12>
 nnoremap <F11> :set number! relativenumber!<CR>
 
 highlight Pmenu ctermbg=238 gui=bold
-colorscheme desert
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
 
 set foldmethod=syntax   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
@@ -85,3 +87,62 @@ set title
 "Vimux config
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = 50
+
+"set spell
+"setlocal spell spelllang=es
+let g:airline_powerline_fonts = 1
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce (not to mention that libvte based terminals
+" incorrectly contain bce in their terminfo files). This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+"let &t_ut=''
+
+function! Hashbang(portable, permission, RemExt)
+let shells = {
+        \    'awk': "awk",
+        \     'sh': "bash",
+        \     'hs': "runhaskell",
+        \     'jl': "julia",
+        \    'lua': "lua",
+        \    'mak': "make",
+        \     'js': "node",
+        \      'm': "octave",
+        \     'pl': "perl",
+        \    'php': "php",
+        \     'py': "python",
+        \      'r': "Rscript",
+        \     'rb': "ruby",
+        \  'scala': "scala",
+        \    'tcl': "tclsh",
+        \     'tk': "wish"
+        \    }
+
+let extension = expand("%:e")
+
+if has_key(shells,extension)
+	let fileshell = shells[extension]
+
+	if a:portable
+		let line =  "#! /usr/bin/env " . fileshell
+	else
+		let line = "#! " . system("which " . fileshell)
+	endif
+
+	0put = line
+
+	if a:permission
+		:autocmd BufWritePost * :autocmd VimLeave * :!chmod u+x %
+	endif
+
+
+	if a:RemExt
+		:autocmd BufWritePost * :autocmd VimLeave * :!mv % "%:p:r"
+	endif
+
+endif
+
+endfunction
+
+:autocmd BufNewFile *.* :call Hashbang(1,1,0)
