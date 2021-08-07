@@ -1,27 +1,30 @@
 #!/usr/bin/python2.7
 # Dowload wallpaper of the day from national geographic
-import urllib,os,re
-import Image, ImageDraw, ImageFont
+import urllib.request
+import os
+import re
+from PIL import Image, ImageDraw, ImageFont
 
 WALLPAPER = "/tmp/wallpaper.jpg"
 
 def download_image(url):
-	durl = urllib.urlopen(url)
-	if durl.code != 404:
-		f = open(WALLPAPER, "w")
-		f.write(durl.read())
-		f.close()
-	else:
-		print "Not found: " + url
+    durl = urllib.request.urlopen(url)
+    if durl.code != 404:
+    	f = open(WALLPAPER, "wb")
+    	f.write(durl.read())
+    	f.close()
+    else:
+    	print(f"Not found{url}")
 
 base = "http://photography.nationalgeographic.com/photography/photo-of-the-day"
-url = urllib.urlopen(base)
+url = urllib.request.urlopen(base)
 caption = "Fail"
 
 for line in url:
-    match = re.search("(http://images.nationalgeographic.com/wpf/media-live/photos/.*jpg)\"  width=\"990\"", line)
+    line = line.decode()
+    match = re.search("(https://i.natgeofe.com/n/[a-zA-Z0-9-]*/[a-zA-Z0-9_-]*\.jpg)", line)
     if match is not None:
-        print "Downloading wallpaper: " + match.group(1)
+        print(f"Downloading wallpaper: {match.group(1)}")
         download_image(match.group(1))
     match = re.search("<h1>(.*)</h1>", line)
     if match is not None:
