@@ -1,8 +1,8 @@
+set nocompatible
 set expandtab
 set tabstop=4
 set sw=4
 set softtabstop=4
-set autoindent
 set shiftround
 set background=dark
 set modeline
@@ -88,8 +88,8 @@ set title
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = 50
 
-"set spell
-"setlocal spell spelllang=es
+set spell
+setlocal spell spelllang=es
 let g:airline_powerline_fonts = 1
 
 " vim hardcodes background color erase even if the terminfo file does
@@ -146,3 +146,10 @@ endif
 endfunction
 
 :autocmd BufNewFile *.* :call Hashbang(1,1,0)
+
+set nosmartindent
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
+
+au BufNewFile,BufRead *.j2 set ft=jinja syntax=htmldjango

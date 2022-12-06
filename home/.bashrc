@@ -62,10 +62,11 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -l'
+alias ll='exa -l'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='exa'
 alias vi='vim'
+alias tree='exa --tree'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -77,6 +78,7 @@ fi
 # Fullscreen only on one monitor
 export SDL_VIDEO_FULLSCREEN_HEAD=1
 PATH=$PATH:/home/daniel/private_code/go/bin
+PATH=$PATH:/home/daniel/go/bin
 PATH=$PATH:/home/daniel/bin
 PATH=$PATH:/home/daniel/.gem/ruby/1.9.1/bin
 export PATH
@@ -106,3 +108,19 @@ export GDK_SCALE=2
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 alias spotify="spotify --force-device-scale-factor=1.75"
 alias pycharm="GDK_SCALE=1 pycharm"
+
+export SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket
+
+source /opt/google-cloud-sdk/completion.bash.inc
+
+eval "$(direnv hook bash)"
+
+function bpi {
+    awk -F: ' \
+    /^Block count:/ { blocks = $2 } \
+    /^Inode count:/ { inodes = $2 } \
+    /^Block size:/ { block_size = $2 } \
+    END { blocks_per_inode = blocks/inodes; \
+          print "blocks per inode:\t", blocks_per_inode, \
+                "\nbytes per inode:\t", blocks_per_inode * block_size }'
+}

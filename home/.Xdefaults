@@ -38,7 +38,7 @@ URxvt.scrollBar: false
 
 !URxvt*font: xft:Terminess Powerline:size=12
 !*font:xft:Terminus Mono:size=10
-*font:xft:TerminessTTF Nerd Font Mono:size=11
+!*font:xft:TerminessTTF Nerd Font Mono:size=11
 !           xft:PragmataPro:size=11
 
 URxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
