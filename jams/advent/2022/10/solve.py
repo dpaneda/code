@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 import sys
 from dataclasses import dataclass
-from typing import Callable, Any
+from typing import Callable
 import time
 
 @dataclass
@@ -34,7 +34,7 @@ class CPU:
 class Op:
     name: str
     cost: int
-    code: Callable[Any, CPU]
+    code: Callable['Op', CPU]
     operand: int = 0
 
     def noop(self, cpu: CPU):
