@@ -4,6 +4,7 @@ from typing import List, Tuple
 import operator
 import re
 import sys
+import math
 
 ROUNDS = 10000
 
@@ -32,10 +33,11 @@ class Monkey:
         return Monkey(mid, items, operation, test_number, destinations)
 
     def inspect(self, monkeys):
+        lcm = math.lcm(*[m.test_number for m in monkeys])
         while self.items:
             old = self.items.pop(0)
             new = eval(self.operation)
-            new = new % 9699690 # Sorry about this xD
+            new = new % lcm
             if new % self.test_number == 0:
                 target = self.destinations[0]
             else:
